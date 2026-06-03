@@ -1,0 +1,244 @@
+/* ============================================================================
+   CABINAS Y CONJUNTOS — Design System Foundations
+   Brand: repuestos oficiales para buses y carrocerías (Colombia)
+   Concept: "LUZ OFICIAL" — luz de señalización sobre base industrial grafito.
+   Fonts: Archivo (grotesca robusta) + Spline Sans Mono (técnico).
+   Served from Google Fonts CDN — see README (font substitution flagged).
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------------------------------------------------------------------------
+     1. COLOR — RAW PALETTE
+     --------------------------------------------------------------------------- */
+
+  /* Grafito / industrial neutrals (dark base that makes product pop) */
+  --graphite-950: #0E1013;
+  --graphite-900: #15181C;   /* page bg (dark mode / footers / hero) */
+  --graphite-800: #1D2127;
+  --graphite-700: #272C34;   /* dark surfaces, cards on dark */
+  --graphite-600: #353B45;   /* borders on dark */
+  --graphite-500: #4B525D;
+  --gray-400:     #6B727D;   /* muted text on light */
+  --gray-300:     #98A0AB;
+  --gray-250:     #B7BEC7;
+  --gray-200:     #D2D7DD;   /* borders on light */
+  --gray-100:     #E7EBEF;   /* hairlines, track fills */
+  --gray-50:      #F3F5F7;   /* page bg (light, default) */
+  --white:        #FFFFFF;
+
+  /* Ámbar señal — PRIMARY ("la luz"). High-vis, hereda el naranja del logo. */
+  --amber-700:    #B96A00;
+  --amber-600:    #E08600;   /* primary press / text-on-light accent */
+  --amber-500:    #FF9E00;   /* PRIMARY brand accent */
+  --amber-400:    #FFB638;
+  --amber-300:    #FFCD73;
+  --amber-100:    #FFEEC9;
+  --amber-50:     #FFF7E8;   /* tint surfaces */
+
+  /* Rojo stop — SECONDARY. Señalética trasera (stops/frenos). Usar con mesura. */
+  --stop-700:     #9E120D;
+  --stop-600:     #C2160F;
+  --stop-500:     #E11D17;   /* secondary accent */
+  --stop-100:     #FBD9D7;
+  --stop-50:      #FDECEB;
+
+  /* Semantic states */
+  --success-600:  #11823F;
+  --success-500:  #16A34A;   /* disponible / homologado OK */
+  --success-50:   #E4F6EC;
+  --info-600:     #1A5FBF;
+  --info-500:     #2474E3;   /* información técnica */
+  --info-50:      #E7F0FD;
+  --warning-500:  #F2B400;   /* atención / stock bajo */
+  --warning-50:   #FEF5DA;
+  --danger-500:   #E11D17;   /* error = rojo stop */
+  --danger-50:    #FDECEB;
+
+  /* ---------------------------------------------------------------------------
+     2. COLOR — SEMANTIC TOKENS (light theme = default)
+     --------------------------------------------------------------------------- */
+  --bg:            var(--gray-50);
+  --bg-elevated:   var(--white);
+  --bg-sunken:     var(--gray-100);
+  --bg-inverse:    var(--graphite-900);
+
+  --fg1:           var(--graphite-900);   /* primary text / títulos */
+  --fg2:           var(--graphite-700);   /* body */
+  --fg3:           var(--gray-400);        /* muted / metadatos */
+  --fg-on-dark:    var(--white);
+  --fg-on-accent:  var(--graphite-950);   /* texto sobre ámbar (negro, AA) */
+
+  --border:        var(--gray-200);
+  --border-strong: var(--graphite-600);
+  --hairline:      var(--gray-100);
+
+  --accent:        var(--amber-500);
+  --accent-press:  var(--amber-600);
+  --accent-tint:   var(--amber-50);
+  --accent-2:      var(--stop-500);
+
+  /* WhatsApp — canal central (color oficial de la plataforma) */
+  --whatsapp:      #25D366;
+  --whatsapp-dark: #1EBE5A;
+
+  /* ---------------------------------------------------------------------------
+     3. TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+  --font-sans: "Archivo", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Spline Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Type scale (mobile-first, 1.250 major-third-ish, tightened) */
+  --text-xs:   12px;   /* metadatos, badges, U/M */
+  --text-sm:   14px;   /* secondary, labels */
+  --text-base: 16px;   /* body */
+  --text-md:   18px;
+  --text-lg:   22px;   /* card titles */
+  --text-xl:   28px;
+  --text-2xl:  36px;   /* section heads */
+  --text-3xl:  46px;
+  --text-4xl:  60px;   /* hero (desktop) */
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+  --weight-bold:    700;
+  --weight-black:   900;
+
+  --leading-tight:  1.05;
+  --leading-snug:   1.2;
+  --leading-normal: 1.5;
+
+  --tracking-tight:  -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;   /* labels uppercase / señalética */
+  --tracking-wider:  0.08em;   /* eyebrow / kicker */
+
+  /* ---------------------------------------------------------------------------
+     4. SPACING (4px base)
+     --------------------------------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ---------------------------------------------------------------------------
+     5. RADII (industrial = contenido, no redondeo excesivo)
+     --------------------------------------------------------------------------- */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;   /* cards, inputs */
+  --radius-lg: 14px;   /* sheets, modals */
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* ---------------------------------------------------------------------------
+     6. ELEVATION
+     - Sombras neutras frías (gris-azulado) para no ensuciar el ámbar.
+     - "Glow" ámbar = motivo de LUZ, sólo para destacar producto/CTA estrella.
+     --------------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(14, 16, 19, 0.06);
+  --shadow-sm: 0 1px 3px rgba(14, 16, 19, 0.08), 0 1px 2px rgba(14, 16, 19, 0.06);
+  --shadow-md: 0 4px 12px rgba(14, 16, 19, 0.10), 0 2px 4px rgba(14, 16, 19, 0.06);
+  --shadow-lg: 0 12px 28px rgba(14, 16, 19, 0.14), 0 4px 8px rgba(14, 16, 19, 0.08);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --glow-amber: 0 0 0 1px rgba(255, 158, 0, 0.35), 0 6px 22px rgba(255, 158, 0, 0.28);
+  --glow-amber-soft: 0 8px 30px rgba(255, 158, 0, 0.18);
+
+  /* ---------------------------------------------------------------------------
+     7. LAYOUT
+     --------------------------------------------------------------------------- */
+  --container: 1200px;
+  --tap-target: 44px;        /* mínimo táctil (manos sucias, taller) */
+  --header-h: 60px;
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+}
+
+/* ============================================================================
+   SEMANTIC ELEMENT STYLES — opt-in via .ds-prose or use the vars directly.
+   ============================================================================ */
+.ds-scope, .ds-prose {
+  font-family: var(--font-sans);
+  color: var(--fg2);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.ds-prose h1, .h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-black);
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg1);
+  text-wrap: balance;
+}
+.ds-prose h2, .h2 {
+  font-weight: var(--weight-bold);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg1);
+}
+.ds-prose h3, .h3 {
+  font-weight: var(--weight-bold);
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--fg1);
+}
+.ds-prose h4, .h4 {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--fg1);
+}
+.ds-prose p, .p { font-size: var(--text-base); line-height: var(--leading-normal); color: var(--fg2); }
+.small { font-size: var(--text-sm); color: var(--fg3); }
+
+/* Eyebrow / kicker — señalética uppercase */
+.kicker {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--accent-press);
+}
+
+/* Technical reference / metadata (DER/IZQ, 24V, códigos) */
+.tech, code, .code {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-medium);
+  font-size: 0.92em;
+  letter-spacing: 0.01em;
+  font-feature-settings: "tnum" 1;   /* tabular numerals para precios */
+}
+
+/* Price — siempre tabular */
+.price {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-feature-settings: "tnum" 1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg1);
+}

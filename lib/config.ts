@@ -26,6 +26,12 @@ export function enlaceWhatsAppPedido(items: LineaCarrito[]): string {
 
 // Enlace de WhatsApp para UN solo producto (botón directo en el detalle).
 export function enlaceWhatsAppProducto(producto: Product): string {
-  const mensaje = `¡Hola! Estoy interesado/a en: [${producto.codigo}] ${producto.nombre}. ¿Disponibilidad y precio?`;
+  const mensaje = `Buen día. Quiero cotizar: [${producto.codigo}] ${producto.nombre}. ¿Disponibilidad y precio?`;
+  return `https://wa.me/${WHATSAPP_VENTAS}?text=${encodeURIComponent(mensaje)}`;
+}
+
+// Enlace de WhatsApp general (hero / contacto, sin producto específico).
+export function enlaceWhatsAppGeneral(): string {
+  const mensaje = "Buen día. Quiero cotizar autopartes para bus.";
   return `https://wa.me/${WHATSAPP_VENTAS}?text=${encodeURIComponent(mensaje)}`;
 }

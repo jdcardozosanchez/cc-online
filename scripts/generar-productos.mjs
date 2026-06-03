@@ -10,26 +10,76 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 
-// --- Configuración por categoría: prefijo de código, nombre legible, emoji y color.
+// --- Configuración por categoría: prefijo de código + nombre legible.
+// (El ícono visual lo pone la UI con Lucide; aquí no usamos emojis — design system.)
 const CATEGORIAS = {
-  FAROL: { pre: "FAR", nombre: "Farol", emoji: "🔦", color: "#dfe7f0" },
-  STOP: { pre: "STP", nombre: "Stop", emoji: "🛑", color: "#f3d9d9" },
-  TERCER: { pre: "STP", nombre: "Stop", emoji: "🛑", color: "#f3d9d9" },
-  CONJUNTO: { pre: "STP", nombre: "Stop", emoji: "🛑", color: "#f3d9d9" },
-  LUZ: { pre: "LUZ", nombre: "Luz", emoji: "💡", color: "#f6efcf" },
-  ESQUINERO: { pre: "ESQ", nombre: "Esquinero", emoji: "📐", color: "#e3e0d8" },
-  ESPEJO: { pre: "ESP", nombre: "Espejo", emoji: "🪞", color: "#dce8e8" },
-  EXPLORADORA: { pre: "EXP", nombre: "Exploradora", emoji: "🔆", color: "#eee2cf" },
-  DIRECCIONAL: { pre: "DIR", nombre: "Direccional", emoji: "➡️", color: "#e8ddf0" },
-  CONECTOR: { pre: "CON", nombre: "Conector", emoji: "🔌", color: "#dfe9df" },
-  ALETA: { pre: "ALE", nombre: "Aleta", emoji: "🛞", color: "#e9e4d6" },
-  CERRADURA: { pre: "CER", nombre: "Cerrajería", emoji: "🔑", color: "#e6ddd2" },
-  CHAPA: { pre: "CER", nombre: "Cerrajería", emoji: "🔑", color: "#e6ddd2" },
-  LLAVE: { pre: "CER", nombre: "Cerrajería", emoji: "🔑", color: "#e6ddd2" },
-  MANIJA: { pre: "MAN", nombre: "Manija", emoji: "🚪", color: "#e0e0e0" },
-  PISTON: { pre: "PIS", nombre: "Pistón", emoji: "⚙️", color: "#dcdcdc" },
-  REFLECTIVO: { pre: "REF", nombre: "Reflectivo", emoji: "🔶", color: "#f2e3cf" },
+  FAROL: { pre: "FAR", nombre: "Farol" },
+  STOP: { pre: "STP", nombre: "Stop" },
+  TERCER: { pre: "STP", nombre: "Stop" },
+  CONJUNTO: { pre: "STP", nombre: "Stop" },
+  LUZ: { pre: "LUZ", nombre: "Luz" },
+  ESQUINERO: { pre: "ESQ", nombre: "Esquinero" },
+  ESPEJO: { pre: "ESP", nombre: "Espejo" },
+  EXPLORADORA: { pre: "EXP", nombre: "Exploradora" },
+  DIRECCIONAL: { pre: "DIR", nombre: "Direccional" },
+  CONECTOR: { pre: "CON", nombre: "Conector" },
+  ALETA: { pre: "ALE", nombre: "Aleta" },
+  CERRADURA: { pre: "CER", nombre: "Cerrajería" },
+  CHAPA: { pre: "CER", nombre: "Cerrajería" },
+  LLAVE: { pre: "CER", nombre: "Cerrajería" },
+  MANIJA: { pre: "MAN", nombre: "Manija" },
+  PISTON: { pre: "PIS", nombre: "Pistón" },
+  REFLECTIVO: { pre: "REF", nombre: "Reflectivo" },
 };
+
+// Carrocerías reconocibles (orden importa: "New G7" antes que "G7").
+// Cada una con su forma de visualización. Las de Marcopolo Superpolo se marcan.
+const CARROCERIAS = [
+  { match: "NEW G7", label: "New G7", marcopolo: true },
+  { match: "G8", label: "G8", marcopolo: true },
+  { match: "G7", label: "G7", marcopolo: true },
+  { match: "G6", label: "G6", marcopolo: true },
+  { match: "PARADISO", label: "Paradiso", marcopolo: true },
+  { match: "ANDARE", label: "Andare", marcopolo: true },
+  { match: "SENIOR", label: "Senior", marcopolo: true },
+  { match: "TORINO", label: "Torino (BRT)", marcopolo: true },
+  { match: "AUDACE", label: "Audace", marcopolo: false },
+  { match: "ATLANTIS", label: "Atlantis", marcopolo: false },
+  { match: "ORION", label: "Orion", marcopolo: false },
+  { match: "MAXI IBIZA", label: "Maxi Ibiza", marcopolo: false },
+  { match: "IBIZA", label: "Ibiza", marcopolo: false },
+  { match: "FASCCINO", label: "Fasccino", marcopolo: false },
+  { match: "MAJESTIC", label: "Majestic", marcopolo: false },
+  { match: "MODASA", label: "Modasa", marcopolo: false },
+  { match: "SIGMA", label: "Sigma", marcopolo: false },
+  { match: "YUTONG", label: "Yutong", marcopolo: false },
+  { match: "INVICAR", label: "Invicar", marcopolo: false },
+  { match: "INCONCAR", label: "Inconcar", marcopolo: false },
+  { match: "BUSSCAR", label: "Busscar", marcopolo: false },
+  { match: "EUROCITY", label: "Eurocity", marcopolo: false },
+  { match: "MEGABUSES", label: "Megabuses", marcopolo: false },
+];
+
+// Detecta la carrocería en la descripción cruda (en MAYÚSCULAS).
+function detectarCarroceria(crudo) {
+  const u = crudo.toUpperCase();
+  for (const c of CARROCERIAS) if (u.includes(c.match)) return c;
+  return null;
+}
+
+// Detecta atributos técnicos para los metadatos / badges de la ficha.
+function detectarAttrs(crudo) {
+  const u = crudo.toUpperCase();
+  const attrs = [];
+  if (u.includes("FULL LED")) attrs.push("Full LED");
+  else if (/\bLED\b/.test(u)) attrs.push("LED");
+  if (/24\s?V/.test(u)) attrs.push("24V");
+  else if (/12\s?V/.test(u)) attrs.push("12V");
+  if (u.includes("CALEFACCION")) attrs.push("Calefacción");
+  if (u.includes("ELECTRICO")) attrs.push("Eléctrico");
+  if (u.includes("GENERICO") || u.includes("GENERICA")) attrs.push("Genérico");
+  return attrs;
+}
 
 // Tokens que deben quedar en MAYÚSCULA tal cual (modelos, tecnología, voltaje…).
 const MAYUS = new Set(["G6", "G7", "G8", "LED", "24V", "12V", "JGB", "BRT", "AGA", "URB"]);
@@ -122,12 +172,7 @@ for (const fila of filas) {
   if (!desc) continue;
 
   const primera = desc.split(/\s+/)[0].toUpperCase();
-  const cat = CATEGORIAS[primera] || {
-    pre: "GEN",
-    nombre: "General",
-    emoji: "📦",
-    color: "#e5e5e5",
-  };
+  const cat = CATEGORIAS[primera] || { pre: "GEN", nombre: "General" };
 
   let { nombre, lado } = limpiarNombre(desc);
   if (LADO_FORZADO[num]) lado = LADO_FORZADO[num]; // corregir duplicados confirmados
@@ -137,8 +182,11 @@ for (const fila of filas) {
   contador[cat.pre] = (contador[cat.pre] || 0) + 1;
   const codigo = `${cat.pre}-${String(contador[cat.pre]).padStart(3, "0")}`;
 
+  const carro = detectarCarroceria(desc);
+  const attrs = detectarAttrs(desc);
   const ladoStr = ladoTexto[lado] ? ` (${ladoTexto[lado]})` : "";
-  const descripcion = `${cat.nombre} para carrocería de bus${ladoStr}. Repuesto disponible por unidad. Referencia ${codigo}.`;
+  const carroStr = carro ? ` para carrocería ${carro.label}` : " para carrocería de bus";
+  const descripcion = `${cat.nombre}${carroStr}${ladoStr}. Repuesto disponible por unidad. Referencia ${codigo}.`;
 
   productos.push({
     id: codigo.toLowerCase(),
@@ -146,8 +194,10 @@ for (const fila of filas) {
     nombre: nombreFinal,
     descripcion,
     categoria: cat.nombre,
-    emoji: cat.emoji,
-    color: cat.color,
+    lado: lado ? lado.toUpperCase() : "", // "DER" | "IZQ" | ""
+    carroceria: carro ? carro.label : "",
+    attrs,
+    marcopolo: carro ? carro.marcopolo : false,
   });
 }
 
@@ -167,9 +217,11 @@ export type Product = {
   codigo: string;      // código visible, p. ej. FAR-001
   nombre: string;
   descripcion: string;
-  categoria: string;
-  emoji: string;       // imagen de relleno por ahora (luego, fotos reales)
-  color: string;       // color de fondo de la tarjeta
+  categoria: string;   // p. ej. "Farol", "Stop" (define el ícono y el filtro)
+  lado: string;        // "DER" | "IZQ" | "" (eje de filtrado obligatorio)
+  carroceria: string;  // p. ej. "G8", "Paradiso" o "" si no aplica
+  attrs: string[];     // metadatos técnicos: ["Full LED", "24V", ...]
+  marcopolo: boolean;  // pertenece a una carrocería Marcopolo Superpolo
 };
 
 export const categorias: string[] = ${JSON.stringify(categoriasUnicas)};

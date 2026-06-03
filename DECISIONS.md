@@ -51,4 +51,16 @@ vez de editar 170 productos a mano.
 **Pendiente:** filas 99/100 y 119/120 venían duplicadas en el Excel; el dueño confirmó que es una
 derecha y una izquierda, ya corregidas en el generador.
 
+## 2026-06-03 — Identidad de marca y design system "Cabinas y Conjuntos"
+**Decision:** Se adoptó el design system de marca recibido desde Claude Design (handoff
+"cabinas-y-conjuntos-design-system"). La marca es **Cabinas y Conjuntos** (C&C). Concepto visual
+**"LUZ OFICIAL"**: base grafito + acento ámbar señal; tipografía **Archivo** (sans) + **Spline
+Sans Mono** (datos técnicos); registro **usted**; **sin emojis** en UI (íconos **Lucide**); CTA
+dominante **"Cotizar por WhatsApp"**; filtros **DER/IZQ** obligatorios; **sin precios**. Copy:
+**"Distribuidores autorizados"** (NO "repuestos oficiales"). Tokens y componentes en `app/globals.css`;
+referencia del kit en `design-system/`.
+**Why:** El negocio encargó la identidad; implementarla da una tienda profesional y coherente.
+**Pendiente:** el logo definitivo seguía en iteración en el chat de diseño (símbolo faro/farola);
+hoy se usa el isotipo creciente del kit hasta que se fije la pieza final.
+
 <!-- Add new decisions below as you make them. -->

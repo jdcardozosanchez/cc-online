@@ -1,26 +1,35 @@
 "use client";
 
-// Barra superior: logo + navegación. Muestra cuántos productos hay en el carrito.
+// Barra superior compacta (60px) y fija. Logo + navegación + contador de cotización.
 import Link from "next/link";
+import { FileText } from "lucide-react";
 import { useCart } from "./CartProvider";
+import { Logo } from "./Logo";
 
 export function Header() {
   const { totalItems } = useCart();
 
   return (
-    <header className="border-b border-stone-200 bg-white">
-      <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight">
-          C&amp;C <span className="text-amber-700">online</span>
+    <header
+      className="fixed top-0 inset-x-0 z-30 bg-white/95 backdrop-blur border-b"
+      style={{ height: "var(--header-h)", borderColor: "var(--border)" }}
+    >
+      <div className="container h-full flex items-center justify-between">
+        <Link href="/" aria-label="Inicio">
+          <Logo size="sm" />
         </Link>
-        <nav className="flex items-center gap-6 text-sm">
-          <Link href="/productos" className="hover:text-amber-700">
-            Productos
+        <nav className="flex items-center gap-5 text-sm">
+          <Link href="/productos" className="font-semibold hover:text-[var(--amber-700)]">
+            Catálogo
           </Link>
-          <Link href="/carrito" className="relative hover:text-amber-700">
-            Carrito
+          <Link
+            href="/carrito"
+            className="inline-flex items-center gap-2 font-semibold hover:text-[var(--amber-700)]"
+          >
+            <FileText size={16} />
+            Cotización
             {totalItems > 0 && (
-              <span className="absolute -top-2 -right-5 bg-amber-700 text-white text-xs rounded-full px-1.5 py-0.5">
+              <span className="wa-fab-count tech" style={{ display: "inline-grid", placeItems: "center", minWidth: 20, height: 20, borderRadius: 999, background: "var(--amber-500)", color: "var(--graphite-950)", fontSize: 11, fontWeight: 700, padding: "0 5px" }}>
                 {totalItems}
               </span>
             )}

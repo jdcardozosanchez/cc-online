@@ -1,24 +1,27 @@
 "use client";
 
-// Carrito = lista de lo que el cliente quiere. NO hay precios ni pago en el sitio:
-// el botón final arma un mensaje con todo el pedido y lo abre en el WhatsApp de ventas.
+// Cotización = lo que el cliente quiere pedir. Sin precios: el botón final arma
+// el mensaje con todas las piezas y lo abre en el WhatsApp de ventas.
 import Link from "next/link";
+import { Send, X, MessageCircle } from "lucide-react";
 import { useCart } from "@/components/CartProvider";
 import { enlaceWhatsAppPedido } from "@/lib/config";
+import { CategoryIcon } from "@/components/CategoryIcon";
 
-export default function CarritoPage() {
-  const { items, quitar, cambiarCantidad, vaciar } = useCart();
+export default function CotizacionPage() {
+  const { items, quitar, cambiarCantidad, vaciar, totalItems } = useCart();
 
-  // Carrito vacío: mensaje amable y enlace para seguir comprando.
   if (items.length === 0) {
     return (
       <section className="text-center py-16">
-        <h1 className="text-2xl font-bold">Tu carrito está vacío</h1>
-        <Link
-          href="/productos"
-          className="inline-block mt-6 text-amber-700 hover:underline"
-        >
-          Ver productos
+        <h1 className="text-2xl font-extrabold" style={{ color: "var(--fg1)" }}>
+          Su cotización está vacía
+        </h1>
+        <p className="mt-2" style={{ color: "var(--fg3)" }}>
+          Agregue las piezas que necesita y envíelas por WhatsApp.
+        </p>
+        <Link href="/productos" className="btn btn-primary mt-6 inline-flex">
+          Ver catálogo
         </Link>
       </section>
     );
@@ -26,37 +29,55 @@ export default function CarritoPage() {
 
   return (
     <section>
-      <h1 className="text-2xl font-bold mb-6">Tu pedido</h1>
+      <div className="kicker">Cotización · {totalItems} piezas</div>
+      <h1 className="text-2xl font-extrabold tracking-tight mt-1 mb-6" style={{ color: "var(--fg1)" }}>
+        Su cotización
+      </h1>
 
-      <ul className="divide-y divide-stone-200 border-y border-stone-200">
+      <ul style={{ borderTop: "1px solid var(--border)" }}>
         {items.map(({ producto, cantidad }) => (
-          <li key={producto.id} className="flex items-center gap-4 py-4">
+          <li
+            key={producto.id}
+            className="flex items-center gap-4 py-4"
+            style={{ borderBottom: "1px solid var(--border)" }}
+          >
             <div
-              className="w-16 h-16 rounded-lg flex items-center justify-center text-3xl shrink-0"
-              style={{ backgroundColor: producto.color }}
+              className="w-16 h-16 rounded-lg grid place-items-center shrink-0"
+              style={{
+                background:
+                  "radial-gradient(80px 50px at 50% 40%, rgba(255,158,0,0.12), transparent 70%), var(--gray-100)",
+                color: "var(--gray-300)",
+              }}
             >
-              {producto.emoji}
+              <CategoryIcon categoria={producto.categoria} size={26} strokeWidth={1.5} />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-mono text-stone-400">{producto.codigo}</p>
-              <p className="font-medium leading-snug">{producto.nombre}</p>
+              <p className="tech text-xs" style={{ color: "var(--fg3)" }}>
+                {producto.codigo}
+                {producto.lado ? ` · ${producto.lado}` : ""}
+              </p>
+              <p className="font-semibold leading-snug uppercase text-sm" style={{ color: "var(--fg1)" }}>
+                {producto.nombre}
+              </p>
             </div>
-            <label className="text-sm text-stone-500">
+            <label className="text-sm" style={{ color: "var(--fg3)" }}>
               Cant.
               <input
                 type="number"
                 min={1}
                 value={cantidad}
                 onChange={(e) => cambiarCantidad(producto.id, Number(e.target.value))}
-                className="ml-2 w-16 rounded border border-stone-300 px-2 py-1 text-center"
+                className="tech ml-2 w-16 text-center"
+                style={{ border: "1px solid var(--border)", borderRadius: 8, padding: "6px 8px" }}
               />
             </label>
             <button
               onClick={() => quitar(producto.id)}
-              className="text-stone-400 hover:text-red-600"
               aria-label={`Quitar ${producto.nombre}`}
+              style={{ color: "var(--gray-300)" }}
+              className="hover:text-[var(--stop-500)]"
             >
-              ✕
+              <X size={18} />
             </button>
           </li>
         ))}
@@ -65,24 +86,28 @@ export default function CarritoPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-8">
         <button
           onClick={vaciar}
-          className="text-sm text-stone-500 hover:text-red-600 self-start"
+          className="text-sm self-start hover:text-[var(--stop-500)]"
+          style={{ color: "var(--fg3)" }}
         >
-          Vaciar carrito
+          Vaciar cotización
         </button>
-
-        {/* El cierre de la venta: abre WhatsApp con todo el pedido escrito. */}
         <a
           href={enlaceWhatsAppPedido(items)}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-green-600 text-white px-8 py-3 font-medium text-center hover:bg-green-700 transition-colors"
+          className="btn btn-wa"
         >
-          Enviar pedido por WhatsApp
+          <Send size={18} />
+          Enviar por WhatsApp
         </a>
       </div>
 
-      <p className="text-sm text-stone-400 mt-6 text-right">
-        Te atenderemos por WhatsApp para confirmar disponibilidad, precio y envío.
+      <p
+        className="mt-6 inline-flex items-center gap-2 tech text-xs"
+        style={{ color: "var(--fg3)" }}
+      >
+        <MessageCircle size={14} color="var(--whatsapp)" />
+        Le atendemos por WhatsApp para confirmar disponibilidad, precio y envío.
       </p>
     </section>
   );

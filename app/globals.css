@@ -1,8 +1,242 @@
+/* ============================================================================
+   CABINAS Y CONJUNTOS — Design System (tokens + componentes)
+   Concepto "LUZ OFICIAL": luz de señalización ámbar sobre base grafito.
+   Fuentes Archivo + Spline Sans Mono vía Google Fonts.
+   Tokens y clases adaptados del handoff de Claude Design.
+   ============================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* Estilos globales mínimos. Casi todo el estilo va por clases de Tailwind
-   directamente en cada componente. */
+:root {
+  /* Grafito / neutros industriales */
+  --graphite-950: #0E1013;
+  --graphite-900: #15181C;
+  --graphite-800: #1D2127;
+  --graphite-700: #272C34;
+  --graphite-600: #353B45;
+  --graphite-500: #4B525D;
+  --gray-400: #6B727D;
+  --gray-300: #98A0AB;
+  --gray-250: #B7BEC7;
+  --gray-200: #D2D7DD;
+  --gray-100: #E7EBEF;
+  --gray-50: #F3F5F7;
+  --white: #FFFFFF;
+
+  /* Ámbar señal — PRIMARIO ("la luz") */
+  --amber-700: #B96A00;
+  --amber-600: #E08600;
+  --amber-500: #FF9E00;
+  --amber-400: #FFB638;
+  --amber-300: #FFCD73;
+  --amber-100: #FFEEC9;
+  --amber-50: #FFF7E8;
+
+  /* Rojo stop — secundario */
+  --stop-700: #9E120D;
+  --stop-600: #C2160F;
+  --stop-500: #E11D17;
+  --stop-100: #FBD9D7;
+  --stop-50: #FDECEB;
+
+  /* Semánticos */
+  --success-600: #11823F;
+  --success-500: #16A34A;
+  --success-50: #E4F6EC;
+  --info-600: #1A5FBF;
+  --info-500: #2474E3;
+  --info-50: #E7F0FD;
+  --warning-500: #F2B400;
+
+  /* Tokens semánticos (tema claro por defecto) */
+  --bg: var(--gray-50);
+  --bg-elevated: var(--white);
+  --bg-inverse: var(--graphite-900);
+  --fg1: var(--graphite-900);
+  --fg2: var(--graphite-700);
+  --fg3: var(--gray-400);
+  --fg-on-accent: var(--graphite-950);
+  --border: var(--gray-200);
+  --border-strong: var(--graphite-600);
+  --hairline: var(--gray-100);
+  --accent: var(--amber-500);
+  --accent-press: var(--amber-600);
+  --accent-tint: var(--amber-50);
+  --whatsapp: #25D366;
+  --whatsapp-dark: #1EBE5A;
+
+  --font-sans: "Archivo", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Spline Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(14, 16, 19, 0.06);
+  --shadow-sm: 0 1px 3px rgba(14, 16, 19, 0.08), 0 1px 2px rgba(14, 16, 19, 0.06);
+  --shadow-md: 0 4px 12px rgba(14, 16, 19, 0.10), 0 2px 4px rgba(14, 16, 19, 0.06);
+  --shadow-lg: 0 12px 28px rgba(14, 16, 19, 0.14), 0 4px 8px rgba(14, 16, 19, 0.08);
+  --glow-amber: 0 0 0 1px rgba(255, 158, 0, 0.35), 0 6px 22px rgba(255, 158, 0, 0.28);
+
+  --container: 1200px;
+  --header-h: 60px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { background: var(--bg); }
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: var(--font-sans);
+  color: var(--fg2);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* --- Tipografía utilitaria --- */
+.kicker {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-press);
+}
+.tech {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  font-feature-settings: "tnum" 1;
+}
+
+.container { max-width: var(--container); margin: 0 auto; padding-left: 16px; padding-right: 16px; }
+
+/* --- Botones (táctiles ≥44px, texto negro sobre ámbar) --- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 44px; padding: 0 20px; border-radius: var(--radius-md);
+  font-weight: 700; font-size: 15px; letter-spacing: 0.01em;
+  border: none; cursor: pointer; transition: background var(--dur, 200ms) var(--ease-out), transform 120ms var(--ease-out);
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--amber-500); color: var(--graphite-950); }
+.btn-primary:hover { background: var(--amber-600); }
+.btn-wa { background: var(--whatsapp); color: #fff; }
+.btn-wa:hover { background: var(--whatsapp-dark); }
+.btn-outline { background: #fff; color: var(--fg1); border: 1.5px solid var(--border-strong); }
+.btn-outline:hover { background: var(--gray-50); }
+.btn-ghost { background: transparent; color: var(--fg1); }
+.btn-sm { height: 36px; padding: 0 14px; font-size: 13px; border-radius: 8px; }
+.btn-full { width: 100%; }
+
+/* --- Badges / sellos tipográficos --- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-weight: 600; font-size: 11px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 5px 10px; border-radius: 6px;
+}
+.badge-side { background: var(--gray-100); color: var(--fg1); }
+.badge-official { background: var(--graphite-900); color: var(--amber-400); }
+.badge-led { background: var(--amber-50); color: var(--amber-700); border: 1px solid var(--amber-100); }
+.badge-marco { background: var(--graphite-900); color: #fff; border: 1px solid var(--graphite-600); }
+
+/* Sello grande Marcopolo */
+.marco-seal {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--graphite-900); color: #fff;
+  padding: 9px 14px; border-radius: 8px; border: 1px solid var(--graphite-600);
+}
+.marco-seal .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber-500); box-shadow: 0 0 8px var(--amber-500); }
+.marco-seal .t { font-weight: 800; font-size: 13px; letter-spacing: -0.01em; }
+.marco-seal .s { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; color: var(--gray-300); text-transform: uppercase; }
+
+/* --- Chips de filtro --- */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 38px; padding: 0 14px; border-radius: var(--radius-pill);
+  font-size: 13px; font-weight: 600; border: 1.5px solid var(--border);
+  background: #fff; color: var(--fg2); cursor: pointer;
+  transition: background 120ms var(--ease-out);
+}
+.chip:hover { background: var(--gray-50); }
+.chip-active { background: var(--graphite-900); color: #fff; border-color: var(--graphite-900); }
+.chip-side { font-family: var(--font-mono); letter-spacing: 0.05em; }
+.chip-on { background: var(--amber-500); color: var(--graphite-950); border-color: var(--amber-500); }
+
+/* --- Búsqueda --- */
+.search {
+  display: flex; align-items: center; gap: 10px; height: 46px;
+  border: 1.5px solid var(--border-strong); border-radius: var(--radius-md);
+  padding: 0 14px; color: var(--fg1); background: #fff; width: 100%;
+}
+.search input { border: none; outline: none; font-size: 15px; width: 100%; background: transparent; color: var(--fg1); font-family: var(--font-sans); }
+.search input::placeholder { color: var(--fg3); }
+
+/* --- Tarjeta de producto --- */
+.prod-card {
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur, 200ms) var(--ease-out);
+}
+.prod-card:hover { box-shadow: var(--shadow-md); }
+.prod-link { display: block; color: inherit; text-decoration: none; }
+.prod-foot { padding: 0 12px 12px; }
+.prod-photo {
+  position: relative; height: 130px;
+  background: radial-gradient(140px 90px at 50% 40%, rgba(255, 158, 0, 0.12), transparent 70%), var(--gray-100);
+  display: grid; place-items: center; color: var(--gray-300);
+}
+.prod-photo .photo-tag {
+  position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gray-300);
+}
+.prod-badges { position: absolute; top: 8px; left: 8px; display: flex; gap: 5px; flex-wrap: wrap; }
+.prod-body { padding: 11px 12px 12px; display: flex; flex-direction: column; flex: 1; }
+.prod-code { font-family: var(--font-mono); font-size: 10px; color: var(--fg3); letter-spacing: 0.04em; }
+.prod-name {
+  font-weight: 700; font-size: 14px; line-height: 1.25; color: var(--fg1);
+  text-transform: uppercase; letter-spacing: -0.005em; margin-top: 3px; min-height: 36px;
+}
+.prod-meta {
+  font-family: var(--font-mono); font-size: 10px; color: var(--fg3);
+  margin: 7px 0 9px; display: flex; gap: 6px; flex-wrap: wrap;
+}
+.prod-meta span { background: var(--gray-100); padding: 2px 6px; border-radius: 4px; }
+.prod-status { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; margin-bottom: 10px; }
+.prod-status .sdot { width: 7px; height: 7px; border-radius: 50%; }
+.prod-status.q { color: var(--amber-700); }
+.prod-status.q .sdot { background: var(--amber-500); }
+.prod-wa {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; height: 42px; margin-top: auto;
+  background: var(--whatsapp); color: #fff; border: none; border-radius: 9px;
+  font-weight: 700; font-size: 13px; cursor: pointer;
+  transition: background 120ms var(--ease-out);
+}
+.prod-wa:hover { background: var(--whatsapp-dark); }
+
+/* --- Barra/FAB de WhatsApp flotante --- */
+.wa-fab {
+  position: fixed; right: 16px; bottom: 16px; z-index: 40;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--whatsapp); color: #fff; height: 54px; padding: 0 22px;
+  border-radius: var(--radius-pill); box-shadow: 0 8px 22px rgba(37, 211, 102, 0.38);
+  font-weight: 700; font-size: 15px; text-decoration: none;
+}
+.wa-fab .count {
+  display: inline-grid; place-items: center; min-width: 20px; height: 20px;
+  border-radius: var(--radius-pill); background: var(--amber-500); color: var(--graphite-950);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700; padding: 0 5px;
+}
+
+/* --- Logo / isotipo --- */
+.logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+.logo-name { font-weight: 800; letter-spacing: -0.01em; line-height: 1; color: var(--fg1); }
+.logo-desc { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg3); margin-top: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }

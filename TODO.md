@@ -25,9 +25,10 @@ Keep each item short and concrete: a thing you could actually start.
       enviar pedido por WhatsApp.
 
 ## ⏭️ Next (soon, once "Now" is solid)
-- [ ] 🟢 Buscar/filtrar el catálogo por categoría (Farol, Stop, Luz…) — son 170 ítems.
-- [ ] 🟢 Fotos reales de los productos (hoy hay un emoji por categoría como relleno).
+- [ ] 🟢 Fotos reales de los productos (hoy hay un placeholder con ícono por categoría).
 - [ ] 🟢 Deploy en Vercel para que la familia y los clientes lo vean en vivo.
+- [ ] 🟢 Logo definitivo: el chat de diseño quedó iterando el símbolo (faro/farola). Hoy uso el
+      isotipo creciente del kit; confirmar la pieza final cuando se decida.
 
 ## 🌙 Later (real, but not yet)
 - [ ] 🟢 Panel para que la familia edite el catálogo sin tocar código (o seguir vía CSV + script).
@@ -44,6 +45,11 @@ Keep each item short and concrete: a thing you could actually start.
 - [x] Catálogo real cargado: 170 autopartes desde el Excel → `data/productos-origen.csv` +
       `scripts/generar-productos.mjs` → `lib/products.ts` (con códigos y nombres profesionales)
 - [x] Tienda SIN precios + flujo de venta por WhatsApp (botón por producto y envío del carrito)
+- [x] **Design system de marca aplicado** (Cabinas y Conjuntos): paleta grafito + ámbar señal
+      ("LUZ OFICIAL"), tipografía Archivo + Spline Sans Mono, header fijo + logo/isotipo, footer
+      grafito, FAB de WhatsApp, tarjetas de producto, sellos (Marcopolo/DER/IZQ), íconos Lucide
+      (reemplazan emojis) y registro "usted". Referencia en `design-system/`.
+- [x] Buscar y filtrar el catálogo (texto + categoría + lado DER/IZQ + Marcopolo)
 
 ---
 
