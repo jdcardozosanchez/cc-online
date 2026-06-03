@@ -31,4 +31,24 @@ dejan ver la tienda en pantalla sin tocar base de datos ni dinero (todo reversib
 **Alternatives considered:** Guardar el carrito en el servidor desde ya (lo aplazamos hasta tener
 Pedidos/Pagos; por ahora es complejidad innecesaria).
 
+## 2026-06-03 — La tienda es un catálogo; las ventas se cierran por WhatsApp
+**Decision:** El sitio NO muestra precios ni cobra en línea. Es un catálogo de autopartes; el
+carrito arma un mensaje con los productos (código, nombre, cantidad) y lo envía al WhatsApp de
+ventas para cerrar ahí. El número se configura en un solo lugar: `lib/config.ts`.
+**Why:** Así lo quiere el negocio: la atención y el cierre son personales por WhatsApp. Esto
+**elimina Wompi/pagos en línea** y, con ello, toda la zona de mayor riesgo (fraude de pagos),
+además de cuentas de clientes y pedidos en base de datos (por ahora innecesarios).
+**Alternatives considered:** Pagos en línea con Wompi (descartado por ahora; se puede retomar más
+adelante si el negocio lo pide).
+
+## 2026-06-03 — Catálogo real generado desde el Excel del negocio
+**Decision:** 170 autopartes (iluminación/carrocería de bus) cargadas. Datos crudos en
+`data/productos-origen.csv`; un script (`scripts/generar-productos.mjs`) limpia los nombres a
+forma profesional, corrige typos, asigna un código por categoría (FAR/STP/LUZ/…) y genera
+`lib/products.ts`. Para actualizar el catálogo se edita el CSV y se vuelve a correr el script.
+**Why:** Mantener una sola fuente de verdad (el CSV) y una generación repetible y revisable, en
+vez de editar 170 productos a mano.
+**Pendiente:** filas 99/100 y 119/120 venían duplicadas en el Excel; el dueño confirmó que es una
+derecha y una izquierda, ya corregidas en el generador.
+
 <!-- Add new decisions below as you make them. -->

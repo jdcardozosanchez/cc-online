@@ -6,17 +6,22 @@
 
 ---
 
-## El edificio completo (orden pensado: de lo seguro a lo delicado)
+> 🔄 **Cambio de rumbo (2026-06-03):** el negocio decidió que la tienda es un **catálogo sin
+> precios** y las ventas se cierran por **WhatsApp**. Eso **elimina pagos en línea (Wompi),
+> cuentas de clientes y pedidos en BD**. El edificio quedó mucho más pequeño y casi sin zonas 🔴.
 
-| Fase | Qué | Zona | Por qué en este orden |
+## El edificio completo (revisado tras el cambio de rumbo)
+
+| Fase | Qué | Zona | Estado / nota |
 |------|-----|------|------------------------|
-| 0 | **Cimientos**: repo + git + documentos de trabajo | ✅ hecho | Red de seguridad antes de escribir nada. |
-| 1 | **Esqueleto en pantalla**: tienda navegable con productos *de mentira* | ✅ hecho | Ver la tienda primero motiva y nos da contra qué probar. Cero dinero, cero datos reales. |
-| 2 | **Productos reales** en Supabase (base de datos, solo lectura) | 🔴-lite | Pasamos de datos falsos a datos de verdad, pero aún sin riesgo de dinero. |
-| 3 | **Cuentas de clientes** (Supabase Auth) | 🔴 | Datos personales: quién ve qué, dónde viven los datos. Planeamos antes. |
-| 4 | **Pedidos e inventario** (la fuente de la verdad) | 🔴 | Un pedido nunca se puede perder ni duplicar. Planeamos antes. |
-| 5 | **Pagos con Wompi** (lo último) | 🔴🔴 | Dinero real. Solo con la doc oficial pegada. Webhook + verificación de firma = corazón antifraude. |
-| 6 | **Despliegue** (Vercel) + monitoreo básico | 🔴 | Que esté en línea, con respaldo, y que nos enteremos si se cae. |
+| 0 | **Cimientos**: repo + git + documentos de trabajo | 🟢 | ✅ hecho |
+| 1 | **Esqueleto en pantalla**: tienda navegable | 🟢 | ✅ hecho |
+| 2 | **Catálogo real** (170 autopartes desde Excel/CSV, sin precios) | 🟢 | ✅ hecho |
+| 3 | **Ventas por WhatsApp**: botón por producto + envío del carrito como pedido | 🟢 | ✅ hecho (falta el número real) |
+| 4 | **Buscar/filtrar** el catálogo + **fotos reales** | 🟢 | siguiente |
+| 5 | **Despliegue** (Vercel) para verlo en vivo | 🟢 | pendiente |
+| 6 | **Panel de catálogo** para la familia (o seguir vía CSV) | 🟢 | más adelante |
+| — | ~~Pagos con Wompi~~ / cuentas / pedidos en BD | ⏸️ | **descartado por ahora** (se vende por WhatsApp) |
 
 > No agregamos tests, sistemas de tareas ni abstracciones hasta sentir el dolor que los justifique.
 

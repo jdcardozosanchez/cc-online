@@ -1,71 +1,1557 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Productos de la tienda — POR AHORA SON INVENTADOS (datos de mentira).
-// Viven en este archivo a propósito: son fáciles de leer, cambiar y BORRAR
-// cuando lleguemos a la Fase 2 (productos reales en Supabase).
-// No hay base de datos todavía. Cero riesgo.
+// ARCHIVO AUTO-GENERADO — no editar a mano.
+// Fuente: data/productos-origen.csv   |   Generador: scripts/generar-productos.mjs
+// Para actualizar el catálogo: cambia el CSV y corre  node scripts/generar-productos.mjs
+//
+// La tienda es un CATÁLOGO: aquí NO hay precios (las ventas se cierran por WhatsApp).
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type Product = {
-  id: string;          // identificador corto y único (va en la URL: /productos/cafe)
+  id: string;          // va en la URL (= código en minúscula)
+  codigo: string;      // código visible, p. ej. FAR-001
   nombre: string;
-  precio: number;      // en pesos colombianos (COP), sin decimales
   descripcion: string;
-  emoji: string;       // imagen de relleno por ahora (luego serán fotos reales)
-  color: string;       // color de fondo de la tarjeta (relleno visual)
+  categoria: string;
+  emoji: string;       // imagen de relleno por ahora (luego, fotos reales)
+  color: string;       // color de fondo de la tarjeta
 };
+
+export const categorias: string[] = ["Farol","Aleta","Exploradora","Stop","Luz","Direccional","Esquinero","Espejo","Conector","Pistón","Cerrajería","Manija","Reflectivo"];
 
 export const productos: Product[] = [
   {
-    id: "cafe",
-    nombre: "Café de origen (libra)",
-    precio: 28000,
-    descripcion: "Café 100% colombiano, tostado artesanalmente. Notas a caramelo y panela.",
-    emoji: "☕",
-    color: "#e7d8c4",
+    "id": "far-001",
+    "codigo": "FAR-001",
+    "nombre": "Farol Yutong — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-001.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
   },
   {
-    id: "panela",
-    nombre: "Panela orgánica (kg)",
-    precio: 8000,
-    descripcion: "Panela pura de trapiche, sin químicos. Endulza con sabor de verdad.",
-    emoji: "🟫",
-    color: "#e3cdb0",
+    "id": "far-002",
+    "codigo": "FAR-002",
+    "nombre": "Farol Yutong — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-002.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
   },
   {
-    id: "miel",
-    nombre: "Miel de abejas (500 ml)",
-    precio: 22000,
-    descripcion: "Miel pura cosechada en finca propia. Sin azúcares añadidos.",
-    emoji: "🍯",
-    color: "#f3e2b3",
+    "id": "far-003",
+    "codigo": "FAR-003",
+    "nombre": "Farol Invicar — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-003.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
   },
   {
-    id: "chocolate",
-    nombre: "Chocolate de mesa (500 g)",
-    precio: 15000,
-    descripcion: "Chocolate para preparar a la taza, con un toque de canela.",
-    emoji: "🍫",
-    color: "#d8c0a8",
+    "id": "far-004",
+    "codigo": "FAR-004",
+    "nombre": "Farol Invicar — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-004.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
   },
   {
-    id: "mermelada-mora",
-    nombre: "Mermelada de mora (300 g)",
-    precio: 12000,
-    descripcion: "Hecha en casa con mora fresca de la región. Poca azúcar, mucho sabor.",
-    emoji: "🫐",
-    color: "#d9c9e0",
+    "id": "far-005",
+    "codigo": "FAR-005",
+    "nombre": "Farol Inconcar Ojo Lupa y Regleta LED — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-005.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
   },
   {
-    id: "arequipe",
-    nombre: "Arequipe artesanal (250 g)",
-    precio: 14000,
-    descripcion: "Arequipe cremoso cocido a fuego lento. El de toda la vida.",
-    emoji: "🍮",
-    color: "#ecd9c0",
+    "id": "far-006",
+    "codigo": "FAR-006",
+    "nombre": "Farol Inconcar Ojo Lupa y Regleta LED — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-006.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
   },
+  {
+    "id": "far-007",
+    "codigo": "FAR-007",
+    "nombre": "Farol Busscar Buseta — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-007.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-008",
+    "codigo": "FAR-008",
+    "nombre": "Farol Busscar Buseta — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-008.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-009",
+    "codigo": "FAR-009",
+    "nombre": "Farol Busscar Bus — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-009.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-010",
+    "codigo": "FAR-010",
+    "nombre": "Farol Busscar Bus — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-010.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-011",
+    "codigo": "FAR-011",
+    "nombre": "Farol Paradiso — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-011.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-012",
+    "codigo": "FAR-012",
+    "nombre": "Farol Paradiso — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-012.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-013",
+    "codigo": "FAR-013",
+    "nombre": "Farol Inconcar Sigma — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-013.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-014",
+    "codigo": "FAR-014",
+    "nombre": "Farol Inconcar Sigma — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-014.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-015",
+    "codigo": "FAR-015",
+    "nombre": "Farol Andare — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-015.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-016",
+    "codigo": "FAR-016",
+    "nombre": "Farol Andare — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-016.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-017",
+    "codigo": "FAR-017",
+    "nombre": "Farol G7 — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-017.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-018",
+    "codigo": "FAR-018",
+    "nombre": "Farol G7 — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-018.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "ale-001",
+    "codigo": "ALE-001",
+    "nombre": "Aleta Decorativa Unidad Paradiso — Lado izquierdo",
+    "descripcion": "Aleta para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ALE-001.",
+    "categoria": "Aleta",
+    "emoji": "🛞",
+    "color": "#e9e4d6"
+  },
+  {
+    "id": "ale-002",
+    "codigo": "ALE-002",
+    "nombre": "Aleta Decorativa Unidad Paradiso — Lado derecho",
+    "descripcion": "Aleta para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ALE-002.",
+    "categoria": "Aleta",
+    "emoji": "🛞",
+    "color": "#e9e4d6"
+  },
+  {
+    "id": "far-019",
+    "codigo": "FAR-019",
+    "nombre": "Farol New G7 — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-019.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-020",
+    "codigo": "FAR-020",
+    "nombre": "Farol New G7 — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-020.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "ale-003",
+    "codigo": "ALE-003",
+    "nombre": "Aleta Farol New G7 — Lado derecho",
+    "descripcion": "Aleta para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ALE-003.",
+    "categoria": "Aleta",
+    "emoji": "🛞",
+    "color": "#e9e4d6"
+  },
+  {
+    "id": "ale-004",
+    "codigo": "ALE-004",
+    "nombre": "Aleta Farol New G7 — Lado izquierdo",
+    "descripcion": "Aleta para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ALE-004.",
+    "categoria": "Aleta",
+    "emoji": "🛞",
+    "color": "#e9e4d6"
+  },
+  {
+    "id": "exp-001",
+    "codigo": "EXP-001",
+    "nombre": "Exploradora New G7 — Lado derecho",
+    "descripcion": "Exploradora para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia EXP-001.",
+    "categoria": "Exploradora",
+    "emoji": "🔆",
+    "color": "#eee2cf"
+  },
+  {
+    "id": "exp-002",
+    "codigo": "EXP-002",
+    "nombre": "Exploradora New G7 — Lado izquierdo",
+    "descripcion": "Exploradora para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia EXP-002.",
+    "categoria": "Exploradora",
+    "emoji": "🔆",
+    "color": "#eee2cf"
+  },
+  {
+    "id": "far-021",
+    "codigo": "FAR-021",
+    "nombre": "Farol G8 Full LED 24V — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-021.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-022",
+    "codigo": "FAR-022",
+    "nombre": "Farol G8 Full LED 24V — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-022.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "exp-003",
+    "codigo": "EXP-003",
+    "nombre": "Exploradora G8 New — Lado derecho",
+    "descripcion": "Exploradora para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia EXP-003.",
+    "categoria": "Exploradora",
+    "emoji": "🔆",
+    "color": "#eee2cf"
+  },
+  {
+    "id": "exp-004",
+    "codigo": "EXP-004",
+    "nombre": "Exploradora G8 New — Lado izquierdo",
+    "descripcion": "Exploradora para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia EXP-004.",
+    "categoria": "Exploradora",
+    "emoji": "🔆",
+    "color": "#eee2cf"
+  },
+  {
+    "id": "far-023",
+    "codigo": "FAR-023",
+    "nombre": "Farol Audace — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-023.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-024",
+    "codigo": "FAR-024",
+    "nombre": "Farol Audace — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-024.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-025",
+    "codigo": "FAR-025",
+    "nombre": "Farol Atlantis — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-025.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-026",
+    "codigo": "FAR-026",
+    "nombre": "Farol Atlantis — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-026.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-027",
+    "codigo": "FAR-027",
+    "nombre": "Farol Orion — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-027.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-028",
+    "codigo": "FAR-028",
+    "nombre": "Farol Orion — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-028.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-029",
+    "codigo": "FAR-029",
+    "nombre": "Farol Carrocería Logos — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-029.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-030",
+    "codigo": "FAR-030",
+    "nombre": "Farol Carrocería Logos — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-030.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-031",
+    "codigo": "FAR-031",
+    "nombre": "Farol Maxi Ibiza — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-031.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-032",
+    "codigo": "FAR-032",
+    "nombre": "Farol Maxi Ibiza — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-032.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-033",
+    "codigo": "FAR-033",
+    "nombre": "Farol Borde Neon Megabuses — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-033.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-034",
+    "codigo": "FAR-034",
+    "nombre": "Farol Borde Neon Megabuses — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-034.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-035",
+    "codigo": "FAR-035",
+    "nombre": "Farol Fasccino — Lado derecho",
+    "descripcion": "Farol para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia FAR-035.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-036",
+    "codigo": "FAR-036",
+    "nombre": "Farol Fasccino — Lado izquierdo",
+    "descripcion": "Farol para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia FAR-036.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "stp-001",
+    "codigo": "STP-001",
+    "nombre": "Stop G7 — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-001.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-002",
+    "codigo": "STP-002",
+    "nombre": "Stop G7 — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-002.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-003",
+    "codigo": "STP-003",
+    "nombre": "Stop Maxi Ibiza Grande — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-003.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-004",
+    "codigo": "STP-004",
+    "nombre": "Stop Maxi Ibiza Grande — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-004.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-005",
+    "codigo": "STP-005",
+    "nombre": "Stop Maxi Ibiza Pequeño Genérico — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-005.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-006",
+    "codigo": "STP-006",
+    "nombre": "Stop Maxi Ibiza Pequeño Genérico — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-006.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-007",
+    "codigo": "STP-007",
+    "nombre": "Stop Inferior G8 LED — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-007.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-008",
+    "codigo": "STP-008",
+    "nombre": "Stop Inferior G8 LED — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-008.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-009",
+    "codigo": "STP-009",
+    "nombre": "Conjunto Stop G8 LED — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-009.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-010",
+    "codigo": "STP-010",
+    "nombre": "Conjunto Stop G8 LED — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-010.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-011",
+    "codigo": "STP-011",
+    "nombre": "Stop Superior G8 LED — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-011.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-012",
+    "codigo": "STP-012",
+    "nombre": "Stop Superior G8 LED — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-012.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-013",
+    "codigo": "STP-013",
+    "nombre": "Stop Ibiza — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-013.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-014",
+    "codigo": "STP-014",
+    "nombre": "Stop Ibiza — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-014.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-015",
+    "codigo": "STP-015",
+    "nombre": "Stop Audace — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-015.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-016",
+    "codigo": "STP-016",
+    "nombre": "Stop Audace — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-016.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-017",
+    "codigo": "STP-017",
+    "nombre": "Stop Inconcar New Sigma — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-017.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-018",
+    "codigo": "STP-018",
+    "nombre": "Stop Inconcar New Sigma — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-018.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-019",
+    "codigo": "STP-019",
+    "nombre": "Stop Fasccino — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-019.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-020",
+    "codigo": "STP-020",
+    "nombre": "Stop Fasccino — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-020.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-021",
+    "codigo": "STP-021",
+    "nombre": "Stop Majestic JGB — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-021.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-022",
+    "codigo": "STP-022",
+    "nombre": "Stop Majestic JGB — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-022.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-023",
+    "codigo": "STP-023",
+    "nombre": "Stop Atlantis — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-023.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-024",
+    "codigo": "STP-024",
+    "nombre": "Stop Atlantis — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-024.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-025",
+    "codigo": "STP-025",
+    "nombre": "Stop Inconcar Sigma P — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-025.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-026",
+    "codigo": "STP-026",
+    "nombre": "Stop Inconcar Sigma P — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-026.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-027",
+    "codigo": "STP-027",
+    "nombre": "Stop Modasa — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-027.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-028",
+    "codigo": "STP-028",
+    "nombre": "Stop Modasa — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-028.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-029",
+    "codigo": "STP-029",
+    "nombre": "Stop Superior Paradiso 1200 — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-029.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-030",
+    "codigo": "STP-030",
+    "nombre": "Stop Superior Paradiso 1200 — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-030.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-031",
+    "codigo": "STP-031",
+    "nombre": "Stop Superior Andare 1000 — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-031.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-032",
+    "codigo": "STP-032",
+    "nombre": "Stop Superior Andare 1000 — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-032.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-033",
+    "codigo": "STP-033",
+    "nombre": "Stop Individual Paradiso — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-033.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-034",
+    "codigo": "STP-034",
+    "nombre": "Stop Individual Paradiso — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-034.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "luz-001",
+    "codigo": "LUZ-001",
+    "nombre": "Luz Reversa Paradiso — Lado izquierdo",
+    "descripcion": "Luz para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia LUZ-001.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-002",
+    "codigo": "LUZ-002",
+    "nombre": "Luz Reversa Paradiso — Lado derecho",
+    "descripcion": "Luz para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia LUZ-002.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-003",
+    "codigo": "LUZ-003",
+    "nombre": "Luz Reversa Andare — Lado izquierdo",
+    "descripcion": "Luz para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia LUZ-003.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-004",
+    "codigo": "LUZ-004",
+    "nombre": "Luz Reversa Andare — Lado derecho",
+    "descripcion": "Luz para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia LUZ-004.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-005",
+    "codigo": "LUZ-005",
+    "nombre": "Luz Lateral LED G7 Pequeña",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-005.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-006",
+    "codigo": "LUZ-006",
+    "nombre": "Luz Lateral LED G7 Tacon",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-006.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-007",
+    "codigo": "LUZ-007",
+    "nombre": "Luz Lateral LED G8 Plana",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-007.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-008",
+    "codigo": "LUZ-008",
+    "nombre": "Luz Lateral LED G8 con Direccional",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-008.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "dir-001",
+    "codigo": "DIR-001",
+    "nombre": "Direccional BRT Torino — Lado derecho",
+    "descripcion": "Direccional para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia DIR-001.",
+    "categoria": "Direccional",
+    "emoji": "➡️",
+    "color": "#e8ddf0"
+  },
+  {
+    "id": "dir-002",
+    "codigo": "DIR-002",
+    "nombre": "Direccional BRT Torino — Lado izquierdo",
+    "descripcion": "Direccional para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia DIR-002.",
+    "categoria": "Direccional",
+    "emoji": "➡️",
+    "color": "#e8ddf0"
+  },
+  {
+    "id": "stp-035",
+    "codigo": "STP-035",
+    "nombre": "Stop en L BRT Torino — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-035.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-036",
+    "codigo": "STP-036",
+    "nombre": "Stop en L BRT Torino — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-036.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-037",
+    "codigo": "STP-037",
+    "nombre": "Stop Bomper G7 — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-037.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-038",
+    "codigo": "STP-038",
+    "nombre": "Stop Bomper G7 — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-038.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-039",
+    "codigo": "STP-039",
+    "nombre": "Stop Bomper Trasero New G8 — Lado derecho",
+    "descripcion": "Stop para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia STP-039.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-040",
+    "codigo": "STP-040",
+    "nombre": "Stop Bomper Trasero New G8 — Lado izquierdo",
+    "descripcion": "Stop para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia STP-040.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "esq-001",
+    "codigo": "ESQ-001",
+    "nombre": "Esquinero Superior Trasera G7 — Lado izquierdo",
+    "descripcion": "Esquinero para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESQ-001.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "esq-002",
+    "codigo": "ESQ-002",
+    "nombre": "Esquinero Superior Trasera G7 — Lado derecho",
+    "descripcion": "Esquinero para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESQ-002.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "esq-003",
+    "codigo": "ESQ-003",
+    "nombre": "Esquinero New G7 — Lado derecho",
+    "descripcion": "Esquinero para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESQ-003.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "esq-004",
+    "codigo": "ESQ-004",
+    "nombre": "Esquinero New G7 — Lado izquierdo",
+    "descripcion": "Esquinero para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESQ-004.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "esq-005",
+    "codigo": "ESQ-005",
+    "nombre": "Esquinero G8 New — Lado derecho",
+    "descripcion": "Esquinero para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESQ-005.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "esq-006",
+    "codigo": "ESQ-006",
+    "nombre": "Esquinero G8 New — Lado izquierdo",
+    "descripcion": "Esquinero para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESQ-006.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "luz-009",
+    "codigo": "LUZ-009",
+    "nombre": "Luz de Frente Pequeña G7",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-009.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-010",
+    "codigo": "LUZ-010",
+    "nombre": "Luz de Frente Pequeña New G7",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-010.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-011",
+    "codigo": "LUZ-011",
+    "nombre": "Luz Frontal G8 Genérica — Lado izquierdo",
+    "descripcion": "Luz para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia LUZ-011.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-012",
+    "codigo": "LUZ-012",
+    "nombre": "Luz Frontal G8 Genérica Central",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-012.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-013",
+    "codigo": "LUZ-013",
+    "nombre": "Luz Frontal G8 Genérica — Lado derecho",
+    "descripcion": "Luz para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia LUZ-013.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "esq-007",
+    "codigo": "ESQ-007",
+    "nombre": "Esquinero Sup Trasero Audace — Lado derecho",
+    "descripcion": "Esquinero para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESQ-007.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "esq-008",
+    "codigo": "ESQ-008",
+    "nombre": "Esquinero Sup Trasero Audace — Lado izquierdo",
+    "descripcion": "Esquinero para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESQ-008.",
+    "categoria": "Esquinero",
+    "emoji": "📐",
+    "color": "#e3e0d8"
+  },
+  {
+    "id": "luz-014",
+    "codigo": "LUZ-014",
+    "nombre": "Luz de Techo Trasera Pequeña Roja Audace",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-014.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-015",
+    "codigo": "LUZ-015",
+    "nombre": "Luz Lateral LED 24V",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-015.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-016",
+    "codigo": "LUZ-016",
+    "nombre": "Luz Lateral Bombillo Andare y Paradiso",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-016.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "far-037",
+    "codigo": "FAR-037",
+    "nombre": "Farol con Luz Posición Senior Urbana",
+    "descripcion": "Farol para carrocería de bus. Repuesto disponible por unidad. Referencia FAR-037.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "far-038",
+    "codigo": "FAR-038",
+    "nombre": "Farol sin Luz Posición Senior Urbana",
+    "descripcion": "Farol para carrocería de bus. Repuesto disponible por unidad. Referencia FAR-038.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "luz-017",
+    "codigo": "LUZ-017",
+    "nombre": "Luz Amarilla 155 mm LED 24V",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-017.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-018",
+    "codigo": "LUZ-018",
+    "nombre": "Luz Roja 155 mm LED 24V",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-018.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-019",
+    "codigo": "LUZ-019",
+    "nombre": "Luz Blanca 155 mm LED 24V",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-019.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-020",
+    "codigo": "LUZ-020",
+    "nombre": "Luz Roja 125 mm 24V Senior",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-020.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "dir-003",
+    "codigo": "DIR-003",
+    "nombre": "Direccional LED 95 mm Senior 24V",
+    "descripcion": "Direccional para carrocería de bus. Repuesto disponible por unidad. Referencia DIR-003.",
+    "categoria": "Direccional",
+    "emoji": "➡️",
+    "color": "#e8ddf0"
+  },
+  {
+    "id": "luz-021",
+    "codigo": "LUZ-021",
+    "nombre": "Luz Blanca 95 mm Senior 24V",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-021.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "exp-005",
+    "codigo": "EXP-005",
+    "nombre": "Exploradora G7 — Lado derecho",
+    "descripcion": "Exploradora para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia EXP-005.",
+    "categoria": "Exploradora",
+    "emoji": "🔆",
+    "color": "#eee2cf"
+  },
+  {
+    "id": "exp-006",
+    "codigo": "EXP-006",
+    "nombre": "Exploradora G7 — Lado izquierdo",
+    "descripcion": "Exploradora para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia EXP-006.",
+    "categoria": "Exploradora",
+    "emoji": "🔆",
+    "color": "#eee2cf"
+  },
+  {
+    "id": "luz-022",
+    "codigo": "LUZ-022",
+    "nombre": "Luz Día Bomper G7 — Lado izquierdo",
+    "descripcion": "Luz para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia LUZ-022.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-023",
+    "codigo": "LUZ-023",
+    "nombre": "Luz Día Bomper G7 — Lado derecho",
+    "descripcion": "Luz para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia LUZ-023.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "dir-004",
+    "codigo": "DIR-004",
+    "nombre": "Direccional LED Alimentador — Lado derecho",
+    "descripcion": "Direccional para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia DIR-004.",
+    "categoria": "Direccional",
+    "emoji": "➡️",
+    "color": "#e8ddf0"
+  },
+  {
+    "id": "dir-005",
+    "codigo": "DIR-005",
+    "nombre": "Direccional LED Alimentador — Lado izquierdo",
+    "descripcion": "Direccional para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia DIR-005.",
+    "categoria": "Direccional",
+    "emoji": "➡️",
+    "color": "#e8ddf0"
+  },
+  {
+    "id": "stp-041",
+    "codigo": "STP-041",
+    "nombre": "Tercer Stop 24 V Andare y Paradiso",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-041.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-042",
+    "codigo": "STP-042",
+    "nombre": "Tercer Stop G7 Pequeño",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-042.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-043",
+    "codigo": "STP-043",
+    "nombre": "Tercer Stop G8 LED 24V",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-043.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "luz-024",
+    "codigo": "LUZ-024",
+    "nombre": "Luz Techo Frente New G7 Grande",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-024.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-025",
+    "codigo": "LUZ-025",
+    "nombre": "Luz Techo Frente Grande Paradiso G7",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-025.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "stp-044",
+    "codigo": "STP-044",
+    "nombre": "Stop Superior G7 Grande",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-044.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-045",
+    "codigo": "STP-045",
+    "nombre": "Stop Superior New G7 Grande",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-045.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-046",
+    "codigo": "STP-046",
+    "nombre": "Stop Superior Central G8",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-046.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "luz-026",
+    "codigo": "LUZ-026",
+    "nombre": "Luz Escalera G7 Blanca",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-026.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-027",
+    "codigo": "LUZ-027",
+    "nombre": "Luz Espejos G7 Amarilla",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-027.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "esp-001",
+    "codigo": "ESP-001",
+    "nombre": "Espejo Manual G7 Fondo Gris — Lado derecho",
+    "descripcion": "Espejo para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESP-001.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "esp-002",
+    "codigo": "ESP-002",
+    "nombre": "Espejo Manual G7 Fondo Gris — Lado izquierdo",
+    "descripcion": "Espejo para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESP-002.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "esp-003",
+    "codigo": "ESP-003",
+    "nombre": "Espejo Eléctrico New G7 con Calefacción — Lado derecho",
+    "descripcion": "Espejo para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESP-003.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "esp-004",
+    "codigo": "ESP-004",
+    "nombre": "Espejo Eléctrico New G7 con Calefacción — Lado izquierdo",
+    "descripcion": "Espejo para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESP-004.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "esp-005",
+    "codigo": "ESP-005",
+    "nombre": "Espejo con Calefacción Genérico G8 Fondo Gris — Lado derecho",
+    "descripcion": "Espejo para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESP-005.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "esp-006",
+    "codigo": "ESP-006",
+    "nombre": "Espejo con Calefacción Genérico G8 Fondo Gris — Lado izquierdo",
+    "descripcion": "Espejo para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESP-006.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "esp-007",
+    "codigo": "ESP-007",
+    "nombre": "Espejo Manual Paradiso G6 — Lado derecho",
+    "descripcion": "Espejo para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia ESP-007.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "esp-008",
+    "codigo": "ESP-008",
+    "nombre": "Espejo Manual Paradiso G6 — Lado izquierdo",
+    "descripcion": "Espejo para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia ESP-008.",
+    "categoria": "Espejo",
+    "emoji": "🪞",
+    "color": "#dce8e8"
+  },
+  {
+    "id": "con-001",
+    "codigo": "CON-001",
+    "nombre": "Conector Farol G7",
+    "descripcion": "Conector para carrocería de bus. Repuesto disponible por unidad. Referencia CON-001.",
+    "categoria": "Conector",
+    "emoji": "🔌",
+    "color": "#dfe9df"
+  },
+  {
+    "id": "con-002",
+    "codigo": "CON-002",
+    "nombre": "Conector Dos Vias Stop G7",
+    "descripcion": "Conector para carrocería de bus. Repuesto disponible por unidad. Referencia CON-002.",
+    "categoria": "Conector",
+    "emoji": "🔌",
+    "color": "#dfe9df"
+  },
+  {
+    "id": "con-003",
+    "codigo": "CON-003",
+    "nombre": "Conector Stop G7 2 Vias Alambre",
+    "descripcion": "Conector para carrocería de bus. Repuesto disponible por unidad. Referencia CON-003.",
+    "categoria": "Conector",
+    "emoji": "🔌",
+    "color": "#dfe9df"
+  },
+  {
+    "id": "con-004",
+    "codigo": "CON-004",
+    "nombre": "Conector Stop G7 3 Vias Alambre",
+    "descripcion": "Conector para carrocería de bus. Repuesto disponible por unidad. Referencia CON-004.",
+    "categoria": "Conector",
+    "emoji": "🔌",
+    "color": "#dfe9df"
+  },
+  {
+    "id": "con-005",
+    "codigo": "CON-005",
+    "nombre": "Conector Tres Vias Stop G7",
+    "descripcion": "Conector para carrocería de bus. Repuesto disponible por unidad. Referencia CON-005.",
+    "categoria": "Conector",
+    "emoji": "🔌",
+    "color": "#dfe9df"
+  },
+  {
+    "id": "pis-001",
+    "codigo": "PIS-001",
+    "nombre": "Piston Spring Bodega 85 Kl 552 mm",
+    "descripcion": "Pistón para carrocería de bus. Repuesto disponible por unidad. Referencia PIS-001.",
+    "categoria": "Pistón",
+    "emoji": "⚙️",
+    "color": "#dcdcdc"
+  },
+  {
+    "id": "pis-002",
+    "codigo": "PIS-002",
+    "nombre": "Piston Chino Silla Eurocity 265 mm 45 Kl",
+    "descripcion": "Pistón para carrocería de bus. Repuesto disponible por unidad. Referencia PIS-002.",
+    "categoria": "Pistón",
+    "emoji": "⚙️",
+    "color": "#dcdcdc"
+  },
+  {
+    "id": "cer-001",
+    "codigo": "CER-001",
+    "nombre": "Cerradura de 1 Giro Llave 810",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-001.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "cer-002",
+    "codigo": "CER-002",
+    "nombre": "Cerradura de 1 Giro Llave 811 Gen",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-002.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "cer-003",
+    "codigo": "CER-003",
+    "nombre": "Cerradura de 1 Giro Llave 812 Gen",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-003.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "cer-004",
+    "codigo": "CER-004",
+    "nombre": "Cerradura de 1 Giro Llave 813 Gen",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-004.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "cer-005",
+    "codigo": "CER-005",
+    "nombre": "Chapa Picoloro con Llave 811",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-005.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "cer-006",
+    "codigo": "CER-006",
+    "nombre": "Chapa Picoloro con Llave 800",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-006.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "cer-007",
+    "codigo": "CER-007",
+    "nombre": "Llave Marcopolo 800-810-811-812-813",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-007.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "man-001",
+    "codigo": "MAN-001",
+    "nombre": "Manija Puertas Laterales G7",
+    "descripcion": "Manija para carrocería de bus. Repuesto disponible por unidad. Referencia MAN-001.",
+    "categoria": "Manija",
+    "emoji": "🚪",
+    "color": "#e0e0e0"
+  },
+  {
+    "id": "luz-028",
+    "codigo": "LUZ-028",
+    "nombre": "Luz Techo Blanca Andare y Paradiso",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-028.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-029",
+    "codigo": "LUZ-029",
+    "nombre": "Luz Aire Palomera Universal 24V",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-029.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-030",
+    "codigo": "LUZ-030",
+    "nombre": "Luz Aire Palomera Gen G7 con Parlante",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-030.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "stp-047",
+    "codigo": "STP-047",
+    "nombre": "Stop AGA Centro Blanco Aro LED Rojo 24V",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-047.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "stp-048",
+    "codigo": "STP-048",
+    "nombre": "Stop AGA Centro Rojo Aro LED Rojo 24V",
+    "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-048.",
+    "categoria": "Stop",
+    "emoji": "🛑",
+    "color": "#f3d9d9"
+  },
+  {
+    "id": "far-039",
+    "codigo": "FAR-039",
+    "nombre": "Farol Tipo Temple URB con Luz Posición",
+    "descripcion": "Farol para carrocería de bus. Repuesto disponible por unidad. Referencia FAR-039.",
+    "categoria": "Farol",
+    "emoji": "🔦",
+    "color": "#dfe7f0"
+  },
+  {
+    "id": "man-002",
+    "codigo": "MAN-002",
+    "nombre": "Manija Bodega y Puerta Tras G7 Gen",
+    "descripcion": "Manija para carrocería de bus. Repuesto disponible por unidad. Referencia MAN-002.",
+    "categoria": "Manija",
+    "emoji": "🚪",
+    "color": "#e0e0e0"
+  },
+  {
+    "id": "cer-008",
+    "codigo": "CER-008",
+    "nombre": "Chapa Puerta Sanitario G7",
+    "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-008.",
+    "categoria": "Cerrajería",
+    "emoji": "🔑",
+    "color": "#e6ddd2"
+  },
+  {
+    "id": "man-003",
+    "codigo": "MAN-003",
+    "nombre": "Manija Bodega Tipo AGA",
+    "descripcion": "Manija para carrocería de bus. Repuesto disponible por unidad. Referencia MAN-003.",
+    "categoria": "Manija",
+    "emoji": "🚪",
+    "color": "#e0e0e0"
+  },
+  {
+    "id": "luz-031",
+    "codigo": "LUZ-031",
+    "nombre": "Luz Reversa BRT Torino",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-031.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "luz-032",
+    "codigo": "LUZ-032",
+    "nombre": "Luz Placa LED G7",
+    "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-032.",
+    "categoria": "Luz",
+    "emoji": "💡",
+    "color": "#f6efcf"
+  },
+  {
+    "id": "ref-001",
+    "codigo": "REF-001",
+    "nombre": "Reflectivo BRT Torino — Lado derecho",
+    "descripcion": "Reflectivo para carrocería de bus (lado derecho). Repuesto disponible por unidad. Referencia REF-001.",
+    "categoria": "Reflectivo",
+    "emoji": "🔶",
+    "color": "#f2e3cf"
+  },
+  {
+    "id": "ref-002",
+    "codigo": "REF-002",
+    "nombre": "Reflectivo BRT Torino — Lado izquierdo",
+    "descripcion": "Reflectivo para carrocería de bus (lado izquierdo). Repuesto disponible por unidad. Referencia REF-002.",
+    "categoria": "Reflectivo",
+    "emoji": "🔶",
+    "color": "#f2e3cf"
+  }
 ];
 
-// Busca un producto por su id. Devuelve undefined si no existe.
+// Busca un producto por su id (= código en minúscula). undefined si no existe.
 export function getProducto(id: string): Product | undefined {
   return productos.find((p) => p.id === id);
 }

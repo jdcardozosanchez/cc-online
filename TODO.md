@@ -11,32 +11,39 @@ One list. Claude reads this too, so it always knows what's next.
 
 Keep each item short and concrete: a thing you could actually start.
 
+> ℹ️ **Cambio de rumbo (2026-06-03):** la tienda es un **catálogo** sin precios; las ventas se
+> cierran por **WhatsApp**. Eso elimina pagos en línea (Wompi), cuentas y pedidos en BD. Con ello
+> casi no quedan zonas 🔴: el proyecto se volvió mucho más simple.
+
 ---
 
 ## 🔥 Now (this session / next session)
-- [ ] 🟢 Polish the look: replace emoji placeholders with real product images
-- [ ] 🟢 Update products + prices to the family's actual items (edit `lib/products.ts`)
-- [ ] 🟢 Tidy copy on the homepage (real welcome text, what the business sells)
+- [ ] 🟢 **Dar el número real de WhatsApp de ventas** y ponerlo en `lib/config.ts` (hoy hay uno de
+      ejemplo). Sin esto, el botón de WhatsApp no escribe al negocio correcto.
+- [ ] 🟢 Revisar el catálogo en pantalla y avisar si algún nombre quedó raro tras la limpieza.
+- [ ] 🟢 Probar el flujo completo: añadir al carrito → "Ir a facturar" / "Seguir comprando" →
+      enviar pedido por WhatsApp.
 
 ## ⏭️ Next (soon, once "Now" is solid)
-- [ ] 🔴 Products from Supabase — move the catalog out of `lib/products.ts` into the database
-      (it's a database change → plan first: where data lives, who can read it)
-- [ ] 🔴 Customer accounts — sign up / log in (touches personal data → plan first)
+- [ ] 🟢 Buscar/filtrar el catálogo por categoría (Farol, Stop, Luz…) — son 170 ítems.
+- [ ] 🟢 Fotos reales de los productos (hoy hay un emoji por categoría como relleno).
+- [ ] 🟢 Deploy en Vercel para que la familia y los clientes lo vean en vivo.
 
 ## 🌙 Later (real, but not yet)
-- [ ] 🔴 Checkout + **Wompi payments** — own dedicated session, official Wompi docs open, plan
-      the whole flow first (especially confirming payment via webhook + signature)
-- [ ] 🔴 Orders — save each order, show the customer their order history
-- [ ] 🔴 Deploy the site so the family can see it live (Vercel) — START-HERE lists deploys as a
-      deep zone (backups, "is it down?"), so we plan it
-- [ ] 🟢 Admin view: let the family add/edit products without touching code
+- [ ] 🟢 Panel para que la familia edite el catálogo sin tocar código (o seguir vía CSV + script).
+- [ ] 🟢 Mover el catálogo a Supabase si el CSV se queda corto (muchos cambios, varias personas).
+- [ ] ⏸️ Pagos en línea con Wompi — **descartado por ahora** (se vende por WhatsApp). Retomar solo
+      si el negocio lo pide; sería 🔴 y con sesión dedicada + docs oficiales.
 
 ## ✅ Done
 - [x] Next.js app scaffolded and running locally (TS + Tailwind + App Router)
 - [x] Repo + git + working docs (CLAUDE / DECISIONS / NOTES / PLAN / TODO)
 - [x] Homepage, catalog grid, and single product detail page (404 on unknown product)
-- [x] Shopping cart (add, view, change quantities, remove) — browser-only for now
+- [x] Shopping cart (add, view, change quantities, remove) — browser-only
 - [x] Site layout: header with logo + live cart count, footer
+- [x] Catálogo real cargado: 170 autopartes desde el Excel → `data/productos-origen.csv` +
+      `scripts/generar-productos.mjs` → `lib/products.ts` (con códigos y nombres profesionales)
+- [x] Tienda SIN precios + flujo de venta por WhatsApp (botón por producto y envío del carrito)
 
 ---
 

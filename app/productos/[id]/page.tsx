@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProducto } from "@/lib/products";
-import { formatearCOP } from "@/lib/format";
 import { AddToCartButton } from "@/components/AddToCartButton";
 
-// Detalle de un producto. El "id" viene de la URL: /productos/cafe
+// Detalle de un producto. El "id" viene de la URL: /productos/far-001
 // En Next.js 16, "params" llega como una promesa, por eso usamos "await".
 export default async function ProductoPage({
   params,
@@ -29,8 +28,13 @@ export default async function ProductoPage({
         <Link href="/productos" className="text-sm text-stone-500 hover:text-amber-700">
           ← Volver a productos
         </Link>
-        <h1 className="text-3xl font-bold mt-2">{producto.nombre}</h1>
-        <p className="text-2xl font-semibold mt-2">{formatearCOP(producto.precio)}</p>
+        <span className="block mt-2 text-sm font-mono text-stone-400">
+          {producto.codigo}
+        </span>
+        <h1 className="text-3xl font-bold mt-1">{producto.nombre}</h1>
+        <span className="inline-block mt-3 text-xs bg-stone-100 text-stone-600 rounded-full px-3 py-1">
+          {producto.categoria}
+        </span>
         <p className="text-stone-600 mt-4">{producto.descripcion}</p>
         <div className="mt-8">
           <AddToCartButton producto={producto} />

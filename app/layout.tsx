@@ -5,8 +5,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "C&C online",
-  description: "Tienda online del negocio familiar.",
+  title: "C&C online — Autopartes para buses",
+  description:
+    "Catálogo de autopartes e iluminación para buses y busetas. Cotiza por WhatsApp.",
 };
 
 export default function RootLayout({
