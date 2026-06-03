@@ -23,6 +23,9 @@ do not read every line.
 - **Prefer boring, standard, well-documented patterns** over clever or trendy ones.
 - **Keep `DECISIONS.md` and `NOTES.md` updated** when we make a real choice or learn something
   that wasn't obvious.
+- **`TODO.md` is the single source of truth for tasks.** Read it to know what's next; when we
+  finish something, move it to Done; when we agree on new work, add it under the right priority.
+  Flag tasks touching payments/accounts/orders with 🔴.
 
 ## 🔴 Deep-understanding zones — NEVER black-box these
 These touch real money or real customer data. Go slow, explain fully, propose a plan first:
@@ -41,5 +44,6 @@ Layout, styling, colors, animations, form boilerplate, component structure, copy
 these by looking at the result on screen.
 
 ## Don't add yet
-No automated test suites, no complex task systems, no premature abstractions — unless I explicitly
-ask. We add process when we hit the pain that justifies it, not before.
+No automated test suites, no premature abstractions, no elaborate tiered task systems (the simple
+`TODO.md` is enough for now) — unless I explicitly ask. We add process when we hit the pain that
+justifies it, not before.
