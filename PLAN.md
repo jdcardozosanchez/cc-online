@@ -11,7 +11,7 @@
 | Fase | Qué | Zona | Por qué en este orden |
 |------|-----|------|------------------------|
 | 0 | **Cimientos**: repo + git + documentos de trabajo | ✅ hecho | Red de seguridad antes de escribir nada. |
-| 1 | **Esqueleto en pantalla**: tienda navegable con productos *de mentira* | 🟢 | Ver la tienda primero motiva y nos da contra qué probar. Cero dinero, cero datos reales. |
+| 1 | **Esqueleto en pantalla**: tienda navegable con productos *de mentira* | ✅ hecho | Ver la tienda primero motiva y nos da contra qué probar. Cero dinero, cero datos reales. |
 | 2 | **Productos reales** en Supabase (base de datos, solo lectura) | 🔴-lite | Pasamos de datos falsos a datos de verdad, pero aún sin riesgo de dinero. |
 | 3 | **Cuentas de clientes** (Supabase Auth) | 🔴 | Datos personales: quién ve qué, dónde viven los datos. Planeamos antes. |
 | 4 | **Pedidos e inventario** (la fuente de la verdad) | 🔴 | Un pedido nunca se puede perder ni duplicar. Planeamos antes. |
