@@ -173,6 +173,36 @@ body {
 .search input { border: none; outline: none; font-size: 15px; width: 100%; background: transparent; color: var(--fg1); font-family: var(--font-sans); }
 .search input::placeholder { color: var(--fg3); }
 
+/* --- Tarjetas de categoría (nivel 1 del catálogo) --- */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 640px) { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .cat-grid { grid-template-columns: repeat(4, 1fr); } }
+.cat-card {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px; color: inherit; text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur, 200ms) var(--ease-out), border-color 120ms var(--ease-out);
+}
+.cat-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.cat-ico {
+  flex: none; width: 56px; height: 56px; border-radius: 10px;
+  display: grid; place-items: center; color: var(--graphite-700);
+  background: radial-gradient(70px 50px at 50% 40%, rgba(255, 158, 0, 0.14), transparent 70%), var(--gray-100);
+}
+.cat-body { flex: 1; min-width: 0; }
+.cat-name {
+  font-weight: 700; font-size: 15px; line-height: 1.2; color: var(--fg1);
+  text-transform: uppercase; letter-spacing: -0.005em;
+}
+.cat-count { font-size: 11px; color: var(--fg3); margin-top: 3px; }
+.cat-arrow { flex: none; color: var(--fg3); transition: color 120ms var(--ease-out), transform 120ms var(--ease-out); }
+.cat-card:hover .cat-arrow { color: var(--accent-press); transform: translateX(2px); }
+
 /* --- Tarjeta de producto --- */
 .prod-card {
   display: flex; flex-direction: column;

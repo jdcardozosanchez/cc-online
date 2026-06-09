@@ -37,6 +37,9 @@ Keep each item short and concrete: a thing you could actually start.
       si el negocio lo pide; sería 🔴 y con sesión dedicada + docs oficiales.
 
 ## ✅ Done
+- [x] Catálogo reorganizado en **dos niveles** (estilo Fredmo): `/productos` muestra tarjetas de
+      categoría; `/productos/categoria/[slug]` muestra los productos de cada categoría. Buscador
+      global conservado en el nivel 1.
 - [x] Número real de WhatsApp de ventas configurado en `lib/config.ts` (`573142976606`). El canal
       usa enlaces wa.me (click-to-chat): NO requiere API de Meta ni verificación de empresa.
 - [x] Next.js app scaffolded and running locally (TS + Tailwind + App Router)

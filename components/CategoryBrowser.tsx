@@ -1,29 +1,28 @@
 "use client";
 
-// Nivel 1 del catálogo (estilo Fredmo): por defecto muestra las CATEGORÍAS como
-// tarjetas. El buscador global se conserva: al escribir, cambia a una grilla de
-// productos que coinciden (de todas las categorías), con filtros DER/IZQ y Marcopolo.
+// Navegador del nivel 2: muestra los productos de UNA categoría, con buscador
+// local + filtros DER/IZQ y Marcopolo (donde más sirven). La categoría ya viene
+// fijada desde la página; aquí no se cambia de categoría.
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
-import { productos } from "@/lib/products";
-import { listaCategorias } from "@/lib/categorias";
-import { ProductCard } from "@/components/ProductCard";
-import { CategoryCard } from "@/components/CategoryCard";
+import Link from "next/link";
+import { ArrowLeft, Search } from "lucide-react";
+import type { Product } from "@/lib/products";
+import { ProductCard } from "./ProductCard";
 
-export default function ProductosPage() {
+export function CategoryBrowser({
+  categoria,
+  items,
+}: {
+  categoria: string;
+  items: Product[];
+}) {
   const [q, setQ] = useState("");
   const [lado, setLado] = useState<string | null>(null);
   const [soloMarco, setSoloMarco] = useState(false);
 
-  const categorias = useMemo(() => listaCategorias(), []);
-
-  // Estamos "buscando" si hay texto o algún filtro activo → mostramos productos.
-  const buscando = q.trim() !== "" || lado !== null || soloMarco;
-
   const filtrados = useMemo(() => {
-    if (!buscando) return [];
     const texto = q.trim().toLowerCase();
-    return productos.filter((p) => {
+    return items.filter((p) => {
       if (lado && p.lado !== lado) return false;
       if (soloMarco && !p.marcopolo) return false;
       if (texto) {
@@ -32,26 +31,37 @@ export default function ProductosPage() {
       }
       return true;
     });
-  }, [buscando, q, lado, soloMarco]);
+  }, [q, lado, soloMarco, items]);
 
   return (
     <section>
-      <div className="kicker">Catálogo · {productos.length} referencias</div>
-      <h1 className="text-2xl font-extrabold tracking-tight mt-1 mb-5" style={{ color: "var(--fg1)" }}>
-        Autopartes para buses
+      <Link
+        href="/productos"
+        className="inline-flex items-center gap-1 text-sm"
+        style={{ color: "var(--fg3)" }}
+      >
+        <ArrowLeft size={15} /> Volver al catálogo
+      </Link>
+
+      <div className="kicker mt-3">Categoría · {items.length} referencias</div>
+      <h1
+        className="text-2xl font-extrabold tracking-tight mt-1 mb-5 uppercase"
+        style={{ color: "var(--fg1)" }}
+      >
+        {categoria}
       </h1>
 
-      {/* Búsqueda global (atajo para quien ya sabe qué pieza quiere) */}
+      {/* Búsqueda dentro de la categoría */}
       <div className="search mb-4">
         <Search size={18} color="var(--fg3)" />
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Buscar por referencia, modelo o pieza…"
+          placeholder={`Buscar dentro de ${categoria}…`}
         />
       </div>
 
-      {/* Filtros DER/IZQ + Marcopolo (activan la vista de resultados) */}
+      {/* Filtros DER/IZQ + Marcopolo */}
       <div className="flex gap-2 flex-wrap items-center mb-6">
         {(["DER", "IZQ"] as const).map((l) => (
           <button
@@ -70,14 +80,7 @@ export default function ProductosPage() {
         </button>
       </div>
 
-      {!buscando ? (
-        /* Vista por defecto: tarjetas de categoría */
-        <div className="cat-grid">
-          {categorias.map((c) => (
-            <CategoryCard key={c.slug} categoria={c} />
-          ))}
-        </div>
-      ) : filtrados.length === 0 ? (
+      {filtrados.length === 0 ? (
         <p className="py-12 text-center" style={{ color: "var(--fg3)" }}>
           No encontramos referencias con esos filtros. Pruebe otra búsqueda o cotice por WhatsApp.
         </p>

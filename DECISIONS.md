@@ -79,4 +79,21 @@ Cloudflare. Se deja para la Fase 6 (panel para que la familia edite el catálogo
 **Alternatives considered:** Vercel (descartado por preferencia de red Cloudflare); Cloudflare con
 adaptador OpenNext (innecesario hoy: sin funciones de servidor, el export estático sobra).
 
+## 2026-06-09 — Catálogo en dos niveles (navegación por categorías, estilo Fredmo)
+**Decision:** `/productos` ya no es una grilla plana de las 170 referencias. Ahora es un catálogo
+en **dos niveles**: el nivel 1 (`/productos`) muestra **tarjetas de categoría** (13) y el nivel 2
+(`/productos/categoria/[slug]`) muestra solo los productos de esa categoría, con filtros DER/IZQ y
+Marcopolo. Se **conserva el buscador global** en el nivel 1: sin texto se ven las categorías; al
+escribir (o activar un filtro) cambia a una grilla de resultados de todas las categorías.
+**Why:** Mejor experiencia para el tipo de usuario (comprador de autopartes con intención clara,
+mucho móvil): no abruma con 170 productos de golpe, páginas más livianas, y refleja cómo busca la
+gente ("voy a Faroles"). Referencia visual: fredmo.com/productos. El buscador global evita el clic
+extra para quien ya sabe la referencia exacta.
+**Detalles técnicos:** ayudantes de categoría en `lib/categorias.ts` (slug sin acentos, conteo) —
+aparte porque `lib/products.ts` es auto-generado; componentes `CategoryCard` (nivel 1) y
+`CategoryBrowser` (nivel 2). El export estático genera las 13 páginas de categoría vía
+`generateStaticParams`.
+**Alternatives considered:** una sola página con secciones por categoría (más scroll, más pesada en
+móvil); híbrido con índice + secciones. Se eligió dos niveles por claridad y rendimiento.
+
 <!-- Add new decisions below as you make them. -->
