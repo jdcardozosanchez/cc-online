@@ -1,10 +1,16 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MessageCircle } from "lucide-react";
-import { getProducto } from "@/lib/products";
+import { getProducto, productos } from "@/lib/products";
 import { enlaceWhatsAppProducto } from "@/lib/config";
 import { AddToCartButton } from "@/components/AddToCartButton";
 import { CategoryIcon } from "@/components/CategoryIcon";
+
+// En modo estático, Next necesita saber de antemano TODAS las páginas de
+// producto que debe generar. Aquí le pasamos el id de los 170 productos.
+export function generateStaticParams() {
+  return productos.map((producto) => ({ id: producto.id }));
+}
 
 // Ficha de producto. params llega como promesa en Next 16.
 export default async function ProductoPage({

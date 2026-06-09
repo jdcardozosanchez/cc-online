@@ -63,4 +63,20 @@ referencia del kit en `design-system/`.
 **Pendiente:** el logo definitivo seguía en iteración en el chat de diseño (símbolo faro/farola);
 hoy se usa el isotipo creciente del kit hasta que se fije la pieza final.
 
+## 2026-06-08 — Despliegue: Cloudflare Pages como sitio estático (no Vercel)
+**Decision:** Publicar la tienda en **Cloudflare Pages** como **export 100% estático**
+(`output: "export"` en `next.config.ts` → `next build` genera la carpeta `out/`). Para que el
+export funcione, la ruta dinámica `app/productos/[id]/page.tsx` ahora declara
+`generateStaticParams` (lista los 170 `id` para pre-generar una página por producto).
+**Why:** El sitio hoy no tiene base de datos, ni rutas de servidor, ni "server actions" — es un
+catálogo estático con el carrito en el navegador. Así que no necesita servidor encendido: se puede
+servir como archivos planos, lo más barato, rápido y difícil de romper. El dueño prefiere la red de
+Cloudflare. Vercel era solo "cero configuración por ser de los creadores de Next", no un requisito.
+**Config de Cloudflare Pages (al conectar el repo):** Build command `npm run build`; Output
+directory `out`. No se sube `out/` al repo (ya está en `.gitignore`); Cloudflare lo reconstruye.
+**Aclaración importante:** Supabase NO es un hosting; es la base de datos. No compite con Vercel/
+Cloudflare. Se deja para la Fase 6 (panel para que la familia edite el catálogo), no para el deploy.
+**Alternatives considered:** Vercel (descartado por preferencia de red Cloudflare); Cloudflare con
+adaptador OpenNext (innecesario hoy: sin funciones de servidor, el export estático sobra).
+
 <!-- Add new decisions below as you make them. -->

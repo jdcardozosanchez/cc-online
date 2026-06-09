@@ -19,7 +19,7 @@
 | 2 | **Catálogo real** (170 autopartes desde Excel/CSV, sin precios) | 🟢 | ✅ hecho |
 | 3 | **Ventas por WhatsApp**: botón por producto + envío del carrito como pedido | 🟢 | ✅ hecho (falta el número real) |
 | 4 | **Buscar/filtrar** el catálogo + **fotos reales** | 🟢 | siguiente |
-| 5 | **Despliegue** (Vercel) para verlo en vivo | 🟢 | pendiente |
+| 5 | **Despliegue** (Cloudflare Pages, sitio estático) para verlo en vivo | 🟢 | export listo; falta conectar el repo |
 | 6 | **Panel de catálogo** para la familia (o seguir vía CSV) | 🟢 | más adelante |
 | — | ~~Pagos con Wompi~~ / cuentas / pedidos en BD | ⏸️ | **descartado por ahora** (se vende por WhatsApp) |
 

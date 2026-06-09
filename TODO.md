@@ -26,7 +26,9 @@ Keep each item short and concrete: a thing you could actually start.
 
 ## ⏭️ Next (soon, once "Now" is solid)
 - [ ] 🟢 Fotos reales de los productos (hoy hay un placeholder con ícono por categoría).
-- [ ] 🟢 Deploy en Vercel para que la familia y los clientes lo vean en vivo.
+- [ ] 🟢 Deploy en **Cloudflare Pages** (sitio estático) para que la familia y los clientes lo vean
+      en vivo. El export ya funciona (`output: "export"` → carpeta `out/`); falta conectar el repo en
+      Cloudflare con build `npm run build` y output `out`.
 - [ ] 🟢 Logo definitivo: el chat de diseño quedó iterando el símbolo (faro/farola). Hoy uso el
       isotipo creciente del kit; confirmar la pieza final cuando se decida.
 
