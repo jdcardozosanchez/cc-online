@@ -18,8 +18,6 @@ Keep each item short and concrete: a thing you could actually start.
 ---
 
 ## 🔥 Now (this session / next session)
-- [ ] 🟢 **Dar el número real de WhatsApp de ventas** y ponerlo en `lib/config.ts` (hoy hay uno de
-      ejemplo). Sin esto, el botón de WhatsApp no escribe al negocio correcto.
 - [ ] 🟢 Revisar el catálogo en pantalla y avisar si algún nombre quedó raro tras la limpieza.
 - [ ] 🟢 Probar el flujo completo: añadir al carrito → "Ir a facturar" / "Seguir comprando" →
       enviar pedido por WhatsApp.
@@ -39,6 +37,8 @@ Keep each item short and concrete: a thing you could actually start.
       si el negocio lo pide; sería 🔴 y con sesión dedicada + docs oficiales.
 
 ## ✅ Done
+- [x] Número real de WhatsApp de ventas configurado en `lib/config.ts` (`573142976606`). El canal
+      usa enlaces wa.me (click-to-chat): NO requiere API de Meta ni verificación de empresa.
 - [x] Next.js app scaffolded and running locally (TS + Tailwind + App Router)
 - [x] Repo + git + working docs (CLAUDE / DECISIONS / NOTES / PLAN / TODO)
 - [x] Homepage, catalog grid, and single product detail page (404 on unknown product)

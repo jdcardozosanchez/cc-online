@@ -7,7 +7,7 @@
 
 import type { Product } from "./products";
 
-export const WHATSAPP_VENTAS = "573001234567"; // ⚠️ NÚMERO DE EJEMPLO — reemplazar
+export const WHATSAPP_VENTAS = "573142976606"; // Número real de ventas (Colombia)
 
 type LineaCarrito = { producto: Product; cantidad: number };
 
