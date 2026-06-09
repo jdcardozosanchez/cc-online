@@ -93,6 +93,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Navegación por anclas: scroll suave + compensar el header fijo */
+html { scroll-behavior: smooth; }
+.scroll-section { scroll-margin-top: calc(var(--header-h) + 16px); }
+
 /* --- Tipografía utilitaria --- */
 .kicker {
   font-family: var(--font-mono);

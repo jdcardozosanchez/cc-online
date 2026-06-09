@@ -96,4 +96,17 @@ aparte porque `lib/products.ts` es auto-generado; componentes `CategoryCard` (ni
 **Alternatives considered:** una sola página con secciones por categoría (más scroll, más pesada en
 móvil); híbrido con índice + secciones. Se eligió dos niveles por claridad y rendimiento.
 
+## 2026-06-09 — Home de una sola tira (scroll) + menú Inicio/Producto/Nosotros
+**Decision:** La home pasa a ser una **página de una sola tira** con tres secciones que se
+recorren bajando: `#inicio` (hero), `#producto` (las 13 categorías/clusters como tarjetas) y
+`#nosotros` (quiénes somos). El header tiene un **menú** (Inicio · Producto · Nosotros) que salta a
+cada sección con scroll suave (rutas con ancla `/#seccion`); se conserva el acceso a Cotización.
+**Why:** El dueño quería más menús (estilo Fredmo) y una experiencia de "ir deslizando hacia
+abajo". La sección Producto muestra los clusters (no los 170 productos sueltos) para no recargar la
+página en móvil; cada cluster abre sus productos en su página (catálogo en dos niveles, intacto).
+**Bonus:** la sección Nosotros publica datos reales del negocio (razón social, NIT, sede, sello
+Marcopolo) tomados de `design-system/brief-marca.md` — útil además para la verificación de empresa
+en Meta (que exige un sitio web creíble con datos del negocio).
+**Técnico:** `scroll-behavior: smooth` + `scroll-margin-top` para compensar el header fijo.
+
 <!-- Add new decisions below as you make them. -->
