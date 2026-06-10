@@ -101,10 +101,6 @@ const TYPOS = {
   PEQUEÑO: "Pequeño",
 };
 
-// Correcciones del lado para los duplicados que el dueño confirmó (por número de fila):
-// 99/100 esquinero G8 y 119/120 exploradora G7 → uno derecho y uno izquierdo.
-const LADO_FORZADO = { 100: "izq", 120: "izq" };
-
 function titleCase(palabra) {
   if (palabra.length === 0) return palabra;
   return palabra[0].toUpperCase() + palabra.slice(1).toLowerCase();
@@ -122,17 +118,11 @@ function limpiarNombre(crudo) {
   s = s.replace(/\*/g, " ");
   s = s.replace(/\s+/g, " ").trim();
 
-  let lado = "";
   const salida = [];
   for (const palabra of s.split(" ")) {
     const up = palabra.toUpperCase();
-    // Detectar y retirar el lado (lo agregamos al final como frase).
-    if (["DER", "DERECHO", "DERECHA", "DCHO"].includes(up)) {
-      lado = "der";
-      continue;
-    }
-    if (["IZQ", "IZQUIERDO", "IZQUIERDA"].includes(up)) {
-      lado = "izq";
+    // Retiramos el lado del nombre: la tienda ya no distingue DER/IZQ (una sola referencia).
+    if (["DER", "DERECHO", "DERECHA", "DCHO", "IZQ", "IZQUIERDO", "IZQUIERDA"].includes(up)) {
       continue;
     }
     if (MAYUS.has(up)) {
@@ -149,12 +139,8 @@ function limpiarNombre(crudo) {
     }
   }
 
-  let nombre = salida.join(" ").replace(/\s+/g, " ").trim();
-  return { nombre, lado };
+  return salida.join(" ").replace(/\s+/g, " ").trim();
 }
-
-const ladoFrase = { der: " — Lado derecho", izq: " — Lado izquierdo", "": "" };
-const ladoTexto = { der: "lado derecho", izq: "lado izquierdo", "": "" };
 
 // --- Leer el CSV.
 const filas = readFileSync(new URL("../data/productos-origen.csv", import.meta.url), "utf8")
@@ -164,37 +150,38 @@ const filas = readFileSync(new URL("../data/productos-origen.csv", import.meta.u
 
 const contador = {}; // para numerar los códigos por prefijo
 const productos = [];
+const nombresVistos = new Set(); // una sola referencia por nombre (fusiona los antiguos DER/IZQ)
 
 for (const fila of filas) {
   const col = fila.split(";");
-  const num = Number(col[0]);
   let desc = (col[2] || "").trim();
   if (!desc) continue;
 
   const primera = desc.split(/\s+/)[0].toUpperCase();
   const cat = CATEGORIAS[primera] || { pre: "GEN", nombre: "General" };
 
-  let { nombre, lado } = limpiarNombre(desc);
-  if (LADO_FORZADO[num]) lado = LADO_FORZADO[num]; // corregir duplicados confirmados
+  const nombre = limpiarNombre(desc);
 
-  const nombreFinal = nombre + ladoFrase[lado];
+  // Antes cada pieza venía dos veces (lado derecho e izquierdo). Ahora queremos UNA
+  // referencia por nombre: si ya la vimos, saltamos este duplicado.
+  const clave = nombre.toUpperCase();
+  if (nombresVistos.has(clave)) continue;
+  nombresVistos.add(clave);
 
   contador[cat.pre] = (contador[cat.pre] || 0) + 1;
   const codigo = `${cat.pre}-${String(contador[cat.pre]).padStart(3, "0")}`;
 
   const carro = detectarCarroceria(desc);
   const attrs = detectarAttrs(desc);
-  const ladoStr = ladoTexto[lado] ? ` (${ladoTexto[lado]})` : "";
   const carroStr = carro ? ` para carrocería ${carro.label}` : " para carrocería de bus";
-  const descripcion = `${cat.nombre}${carroStr}${ladoStr}. Repuesto disponible por unidad. Referencia ${codigo}.`;
+  const descripcion = `${cat.nombre}${carroStr}. Repuesto disponible por unidad. Referencia ${codigo}.`;
 
   productos.push({
     id: codigo.toLowerCase(),
     codigo,
-    nombre: nombreFinal,
+    nombre,
     descripcion,
     categoria: cat.nombre,
-    lado: lado ? lado.toUpperCase() : "", // "DER" | "IZQ" | ""
     carroceria: carro ? carro.label : "",
     attrs,
     marcopolo: carro ? carro.marcopolo : false,
@@ -218,7 +205,6 @@ export type Product = {
   nombre: string;
   descripcion: string;
   categoria: string;   // p. ej. "Farol", "Stop" (define el ícono y el filtro)
-  lado: string;        // "DER" | "IZQ" | "" (eje de filtrado obligatorio)
   carroceria: string;  // p. ej. "G8", "Paradiso" o "" si no aplica
   attrs: string[];     // metadatos técnicos: ["Full LED", "24V", ...]
   marcopolo: boolean;  // pertenece a una carrocería Marcopolo Superpolo

@@ -14,7 +14,6 @@ export function ProductCard({ producto }: { producto: Product }) {
         <div className="prod-photo">
           <div className="prod-badges">
             {producto.marcopolo && <span className="badge badge-marco">Marcopolo</span>}
-            {producto.lado && <span className="badge badge-side">{producto.lado}</span>}
           </div>
           <CategoryIcon categoria={producto.categoria} size={34} strokeWidth={1.5} />
           <span className="photo-tag">Foto de producto</span>

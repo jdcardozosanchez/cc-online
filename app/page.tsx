@@ -100,8 +100,8 @@ export default function Home() {
           Nuestros productos por categoría
         </h2>
         <p className="mt-2 max-w-2xl" style={{ color: "var(--fg2)" }}>
-          Elija una categoría para ver sus referencias. Filtre por lado (DER/IZQ) y
-          por línea Marcopolo dentro de cada una.
+          Elija una categoría para ver sus referencias. Filtre por línea Marcopolo
+          dentro de cada una.
         </p>
 
         <div className="cat-grid mt-6">
@@ -150,7 +150,7 @@ export default function Home() {
             <Wrench size={22} color="var(--amber-600)" />
             <p className="font-bold mt-2" style={{ color: "var(--fg1)" }}>Par técnico</p>
             <p className="text-sm mt-1" style={{ color: "var(--fg3)" }}>
-              Atendemos por carrocería, modelo, lado y referencia exacta.
+              Atendemos por carrocería, modelo y referencia exacta.
             </p>
           </div>
         </div>

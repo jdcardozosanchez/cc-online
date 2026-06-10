@@ -37,6 +37,10 @@ Keep each item short and concrete: a thing you could actually start.
       si el negocio lo pide; sería 🔴 y con sesión dedicada + docs oficiales.
 
 ## ✅ Done
+- [x] **Una sola referencia por nombre** (sin lado DER/IZQ): se fusionaron los duplicados izq/der
+      (170 → 112), se quitó el campo `lado`, sus filtros y sellos. Códigos renumerados. La fusión vive
+      en el generador. Ver `DECISIONS.md` (2026-06-10).
+- [x] **Buscador "de primeras"** en `/productos`: la caja de búsqueda quedó al tope de la sección.
 - [x] Catálogo reorganizado en **dos niveles** (estilo Fredmo): `/productos` muestra tarjetas de
       categoría; `/productos/categoria/[slug]` muestra los productos de cada categoría. Buscador
       global conservado en el nivel 1.

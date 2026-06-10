@@ -110,3 +110,13 @@ en Meta (que exige un sitio web creíble con datos del negocio).
 **Técnico:** `scroll-behavior: smooth` + `scroll-margin-top` para compensar el header fijo.
 
 <!-- Add new decisions below as you make them. -->
+
+## 2026-06-10 — Una sola referencia por nombre (sin lado DER/IZQ)
+**Decision:** El catálogo deja de distinguir lado derecho/izquierdo. Las piezas que venían cargadas
+dos veces (una DER y una IZQ) se fusionan en **una sola referencia con solo el nombre**. Se quitó el
+campo `lado` del producto, los filtros DER/IZQ (catálogo y categoría) y los sellos de lado. Total:
+**170 → 112 referencias**. Como hay menos piezas, los **códigos se renumeraron**.
+**Why:** El dueño no quiere duplicar cada pieza por lado; se atiende el lado al cotizar por WhatsApp.
+Menos ruido en el catálogo y más fácil de mantener.
+**Técnico:** La fusión la hace el generador (`scripts/generar-productos.mjs`): limpia el lado del
+nombre y descarta nombres repetidos (un `Set`). Para regenerar: `node scripts/generar-productos.mjs`.

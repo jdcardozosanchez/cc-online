@@ -17,13 +17,11 @@ export function CategoryBrowser({
   items: Product[];
 }) {
   const [q, setQ] = useState("");
-  const [lado, setLado] = useState<string | null>(null);
   const [soloMarco, setSoloMarco] = useState(false);
 
   const filtrados = useMemo(() => {
     const texto = q.trim().toLowerCase();
     return items.filter((p) => {
-      if (lado && p.lado !== lado) return false;
       if (soloMarco && !p.marcopolo) return false;
       if (texto) {
         const blob = `${p.codigo} ${p.nombre} ${p.carroceria} ${p.attrs.join(" ")}`.toLowerCase();
@@ -31,7 +29,7 @@ export function CategoryBrowser({
       }
       return true;
     });
-  }, [q, lado, soloMarco, items]);
+  }, [q, soloMarco, items]);
 
   return (
     <section>
@@ -61,17 +59,8 @@ export function CategoryBrowser({
         />
       </div>
 
-      {/* Filtros DER/IZQ + Marcopolo */}
+      {/* Filtro Marcopolo */}
       <div className="flex gap-2 flex-wrap items-center mb-6">
-        {(["DER", "IZQ"] as const).map((l) => (
-          <button
-            key={l}
-            className={"chip chip-side" + (lado === l ? " chip-on" : "")}
-            onClick={() => setLado(lado === l ? null : l)}
-          >
-            {l}
-          </button>
-        ))}
         <button
           className={"chip" + (soloMarco ? " chip-active" : "")}
           onClick={() => setSoloMarco((v) => !v)}

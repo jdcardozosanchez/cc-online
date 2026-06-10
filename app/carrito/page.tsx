@@ -54,7 +54,6 @@ export default function CotizacionPage() {
             <div className="flex-1 min-w-0">
               <p className="tech text-xs" style={{ color: "var(--fg3)" }}>
                 {producto.codigo}
-                {producto.lado ? ` · ${producto.lado}` : ""}
               </p>
               <p className="font-semibold leading-snug uppercase text-sm" style={{ color: "var(--fg1)" }}>
                 {producto.nombre}

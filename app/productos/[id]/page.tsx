@@ -31,7 +31,6 @@ export default async function ProductoPage({
       >
         <div className="prod-badges">
           {producto.marcopolo && <span className="badge badge-marco">Marcopolo</span>}
-          {producto.lado && <span className="badge badge-side">{producto.lado}</span>}
         </div>
         <CategoryIcon categoria={producto.categoria} size={64} strokeWidth={1.25} />
         <span className="photo-tag">Foto de producto</span>
