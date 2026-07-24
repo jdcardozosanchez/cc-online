@@ -35,7 +35,7 @@ export default function ProductosPage() {
   return (
     <section>
       {/* Búsqueda global de primeras: lo primero que ve quien ya sabe qué pieza quiere */}
-      <div className="search mb-4">
+      <div className="search">
         <Search size={18} color="var(--fg3)" />
         <input
           value={q}
@@ -44,13 +44,14 @@ export default function ProductosPage() {
         />
       </div>
 
-      <div className="kicker">Catálogo · {productos.length} referencias</div>
+      <div className="kicker mt-6">Catálogo · {productos.length} referencias</div>
       <h1 className="text-2xl font-extrabold tracking-tight mt-1 mb-5" style={{ color: "var(--fg1)" }}>
         Autopartes para buses
       </h1>
 
       {/* Filtro Marcopolo (activa la vista de resultados) */}
       <div className="flex gap-2 flex-wrap items-center mb-6">
+        <span className="text-sm" style={{ color: "var(--fg3)" }}>Filtrar:</span>
         <button
           className={"chip" + (soloMarco ? " chip-active" : "")}
           onClick={() => setSoloMarco((v) => !v)}
