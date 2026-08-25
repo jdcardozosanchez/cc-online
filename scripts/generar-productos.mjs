@@ -237,9 +237,15 @@ for (const fila of filas) {
   const camion = carro ? null : detectarCamion(desc);
   const attrs = detectarAttrs(desc);
 
+  // Línea: Bus o Camión. Camión si detectamos un vehículo de camión o si la
+  // categoría es exclusiva de camión; en cualquier otro caso, Bus.
+  const linea = camion || CATEGORIAS_CAMION.has(cat.nombre) ? "Camión" : "Bus";
+
   // El campo `carroceria` guarda la etiqueta del vehículo (bus o camión).
+  // Si no reconocemos un vehículo concreto, usamos un texto genérico según la
+  // línea (nunca "de bus" para una pieza de camión).
   let vehiculo = "";
-  let dondeVa = " para carrocería de bus";
+  let dondeVa = linea === "Camión" ? " para camión" : " para carrocería de bus";
   if (carro) {
     vehiculo = carro.label;
     dondeVa = ` para carrocería ${carro.label}`;
@@ -248,10 +254,6 @@ for (const fila of filas) {
     dondeVa = ` para camión ${camion.label}`;
   }
   const descripcion = `${cat.nombre}${dondeVa}. Repuesto disponible por unidad. Referencia ${codigo}.`;
-
-  // Línea: Bus o Camión. Camión si detectamos un vehículo de camión o si la
-  // categoría es exclusiva de camión; en cualquier otro caso, Bus.
-  const linea = camion || CATEGORIAS_CAMION.has(cat.nombre) ? "Camión" : "Bus";
 
   productos.push({
     id: codigo.toLowerCase(),
