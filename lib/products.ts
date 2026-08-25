@@ -17,7 +17,7 @@ export type Product = {
   marcopolo: boolean;  // pertenece a una carrocería Marcopolo Superpolo
 };
 
-export const categorias: string[] = ["Farol","Aleta","Exploradora","Stop","Luz","Direccional","Esquinero","Espejo","Conector","Pistón","Cerrajería","Manija","Reflectivo"];
+export const categorias: string[] = ["Farol","Aleta","Exploradora","Stop","Luz","Direccional","Esquinero","Espejo","Conector","Pistón","Cerrajería","Manija","Reflectivo","Bómper","Persiana","Estribo","Pedal","Panel"];
 
 export const productos: Product[] = [
   {
@@ -514,7 +514,7 @@ export const productos: Product[] = [
   {
     "id": "stp-019",
     "codigo": "STP-019",
-    "nombre": "Stop Bomper G7",
+    "nombre": "Stop Bómper G7",
     "descripcion": "Stop para carrocería G7. Repuesto disponible por unidad. Referencia STP-019.",
     "categoria": "Stop",
     "carroceria": "G7",
@@ -524,7 +524,7 @@ export const productos: Product[] = [
   {
     "id": "stp-020",
     "codigo": "STP-020",
-    "nombre": "Stop Bomper Trasero New G8",
+    "nombre": "Stop Bómper Trasero New G8",
     "descripcion": "Stop para carrocería G8. Repuesto disponible por unidad. Referencia STP-020.",
     "categoria": "Stop",
     "carroceria": "G8",
@@ -608,7 +608,7 @@ export const productos: Product[] = [
   {
     "id": "esq-004",
     "codigo": "ESQ-004",
-    "nombre": "Esquinero Sup Trasero Audace",
+    "nombre": "Esquinero SUP Trasero Audace",
     "descripcion": "Esquinero para carrocería Audace. Repuesto disponible por unidad. Referencia ESQ-004.",
     "categoria": "Esquinero",
     "carroceria": "Audace",
@@ -671,7 +671,7 @@ export const productos: Product[] = [
   {
     "id": "luz-014",
     "codigo": "LUZ-014",
-    "nombre": "Luz Amarilla 155 mm LED 24V",
+    "nombre": "Luz Amarilla 155 MM LED 24V",
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-014.",
     "categoria": "Luz",
     "carroceria": "",
@@ -684,7 +684,7 @@ export const productos: Product[] = [
   {
     "id": "luz-015",
     "codigo": "LUZ-015",
-    "nombre": "Luz Roja 155 mm LED 24V",
+    "nombre": "Luz Roja 155 MM LED 24V",
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-015.",
     "categoria": "Luz",
     "carroceria": "",
@@ -697,7 +697,7 @@ export const productos: Product[] = [
   {
     "id": "luz-016",
     "codigo": "LUZ-016",
-    "nombre": "Luz Blanca 155 mm LED 24V",
+    "nombre": "Luz Blanca 155 MM LED 24V",
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-016.",
     "categoria": "Luz",
     "carroceria": "",
@@ -710,7 +710,7 @@ export const productos: Product[] = [
   {
     "id": "luz-017",
     "codigo": "LUZ-017",
-    "nombre": "Luz Roja 125 mm 24V Senior",
+    "nombre": "Luz Roja 125 MM 24V Senior",
     "descripcion": "Luz para carrocería Senior. Repuesto disponible por unidad. Referencia LUZ-017.",
     "categoria": "Luz",
     "carroceria": "Senior",
@@ -722,7 +722,7 @@ export const productos: Product[] = [
   {
     "id": "dir-002",
     "codigo": "DIR-002",
-    "nombre": "Direccional LED 95 mm Senior 24V",
+    "nombre": "Direccional LED 95 MM Senior 24V",
     "descripcion": "Direccional para carrocería Senior. Repuesto disponible por unidad. Referencia DIR-002.",
     "categoria": "Direccional",
     "carroceria": "Senior",
@@ -735,7 +735,7 @@ export const productos: Product[] = [
   {
     "id": "luz-018",
     "codigo": "LUZ-018",
-    "nombre": "Luz Blanca 95 mm Senior 24V",
+    "nombre": "Luz Blanca 95 MM Senior 24V",
     "descripcion": "Luz para carrocería Senior. Repuesto disponible por unidad. Referencia LUZ-018.",
     "categoria": "Luz",
     "carroceria": "Senior",
@@ -757,7 +757,7 @@ export const productos: Product[] = [
   {
     "id": "luz-019",
     "codigo": "LUZ-019",
-    "nombre": "Luz Día Bomper G7",
+    "nombre": "Luz Día Bómper G7",
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-019.",
     "categoria": "Luz",
     "carroceria": "G7",
@@ -980,7 +980,7 @@ export const productos: Product[] = [
   {
     "id": "pis-001",
     "codigo": "PIS-001",
-    "nombre": "Piston Spring Bodega 85 Kl 552 mm",
+    "nombre": "Piston Spring Bodega 85 Kl 552 MM",
     "descripcion": "Pistón para carrocería de bus. Repuesto disponible por unidad. Referencia PIS-001.",
     "categoria": "Pistón",
     "carroceria": "",
@@ -990,7 +990,7 @@ export const productos: Product[] = [
   {
     "id": "pis-002",
     "codigo": "PIS-002",
-    "nombre": "Piston Chino Silla Eurocity 265 mm 45 Kl",
+    "nombre": "Piston Chino Silla Eurocity 265 MM 45 Kl",
     "descripcion": "Pistón para carrocería Eurocity. Repuesto disponible por unidad. Referencia PIS-002.",
     "categoria": "Pistón",
     "carroceria": "Eurocity",
@@ -1206,6 +1206,456 @@ export const productos: Product[] = [
     "carroceria": "Torino (BRT)",
     "attrs": [],
     "marcopolo": true
+  },
+  {
+    "id": "far-022",
+    "codigo": "FAR-022",
+    "nombre": "Farol Hino Dutro 300 MAX con Motor",
+    "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-022.",
+    "categoria": "Farol",
+    "carroceria": "Hino Dutro 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-023",
+    "codigo": "FAR-023",
+    "nombre": "Farol Hino Dutro 300 MAX",
+    "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-023.",
+    "categoria": "Farol",
+    "carroceria": "Hino Dutro 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-024",
+    "codigo": "FAR-024",
+    "nombre": "Farol Hino Dutro 300 2018 a 2020",
+    "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-024.",
+    "categoria": "Farol",
+    "carroceria": "Hino Dutro 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-025",
+    "codigo": "FAR-025",
+    "nombre": "Farol Hino Dutro 300 2005 a 2017",
+    "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-025.",
+    "categoria": "Farol",
+    "carroceria": "Hino Dutro 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "dir-004",
+    "codigo": "DIR-004",
+    "nombre": "Direccional Hino Dutro 300 2005 a 2017",
+    "descripcion": "Direccional para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia DIR-004.",
+    "categoria": "Direccional",
+    "carroceria": "Hino Dutro 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "exp-004",
+    "codigo": "EXP-004",
+    "nombre": "Exploradora Hino 300",
+    "descripcion": "Exploradora para camión Hino 300. Repuesto disponible por unidad. Referencia EXP-004.",
+    "categoria": "Exploradora",
+    "carroceria": "Hino 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-026",
+    "codigo": "FAR-026",
+    "nombre": "Farol Hino 500 2005 a 2020",
+    "descripcion": "Farol para camión Hino 500. Repuesto disponible por unidad. Referencia FAR-026.",
+    "categoria": "Farol",
+    "carroceria": "Hino 500",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "dir-005",
+    "codigo": "DIR-005",
+    "nombre": "Direccional Hino 500 2005 a 2020",
+    "descripcion": "Direccional para camión Hino 500. Repuesto disponible por unidad. Referencia DIR-005.",
+    "categoria": "Direccional",
+    "carroceria": "Hino 500",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-001",
+    "codigo": "BOM-001",
+    "nombre": "Bómper Superior Hino 500 SUP 215 MM",
+    "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-001.",
+    "categoria": "Bómper",
+    "carroceria": "Hino 500",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-002",
+    "codigo": "BOM-002",
+    "nombre": "Bómper Superior Hino 500 de 215 MM",
+    "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-002.",
+    "categoria": "Bómper",
+    "carroceria": "Hino 500",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-003",
+    "codigo": "BOM-003",
+    "nombre": "Bómper Superior Hino 500 SUP 195 MM",
+    "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-003.",
+    "categoria": "Bómper",
+    "carroceria": "Hino 500",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-004",
+    "codigo": "BOM-004",
+    "nombre": "Bómper Inferior Hino 500 SUP 195 MM",
+    "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-004.",
+    "categoria": "Bómper",
+    "carroceria": "Hino 500",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-027",
+    "codigo": "FAR-027",
+    "nombre": "Farol Hino 500 FC 2021",
+    "descripcion": "Farol para camión Hino 500 FC. Repuesto disponible por unidad. Referencia FAR-027.",
+    "categoria": "Farol",
+    "carroceria": "Hino 500 FC",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "dir-006",
+    "codigo": "DIR-006",
+    "nombre": "Direccional Hino 500 FC 2021",
+    "descripcion": "Direccional para camión Hino 500 FC. Repuesto disponible por unidad. Referencia DIR-006.",
+    "categoria": "Direccional",
+    "carroceria": "Hino 500 FC",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-028",
+    "codigo": "FAR-028",
+    "nombre": "Farol Isuzu NPR (2004-2008)",
+    "descripcion": "Farol para camión Isuzu NPR. Repuesto disponible por unidad. Referencia FAR-028.",
+    "categoria": "Farol",
+    "carroceria": "Isuzu NPR",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "dir-007",
+    "codigo": "DIR-007",
+    "nombre": "Direccional Isuzu NPR (2004-2008)",
+    "descripcion": "Direccional para camión Isuzu NPR. Repuesto disponible por unidad. Referencia DIR-007.",
+    "categoria": "Direccional",
+    "carroceria": "Isuzu NPR",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-029",
+    "codigo": "FAR-029",
+    "nombre": "Farol Chevrolet Reward N/F con Motor",
+    "descripcion": "Farol para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia FAR-029.",
+    "categoria": "Farol",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-030",
+    "codigo": "FAR-030",
+    "nombre": "Farol Chevrolet Reward N/F",
+    "descripcion": "Farol para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia FAR-030.",
+    "categoria": "Farol",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "dir-008",
+    "codigo": "DIR-008",
+    "nombre": "Direccional Chevrolet Reward N/F",
+    "descripcion": "Direccional para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia DIR-008.",
+    "categoria": "Direccional",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-031",
+    "codigo": "FAR-031",
+    "nombre": "Farol JMC",
+    "descripcion": "Farol para camión JMC. Repuesto disponible por unidad. Referencia FAR-031.",
+    "categoria": "Farol",
+    "carroceria": "JMC",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "exp-005",
+    "codigo": "EXP-005",
+    "nombre": "Exploradora JMC",
+    "descripcion": "Exploradora para camión JMC. Repuesto disponible por unidad. Referencia EXP-005.",
+    "categoria": "Exploradora",
+    "carroceria": "JMC",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "luz-029",
+    "codigo": "LUZ-029",
+    "nombre": "Luz de Puerta JMC",
+    "descripcion": "Luz para camión JMC. Repuesto disponible por unidad. Referencia LUZ-029.",
+    "categoria": "Luz",
+    "carroceria": "JMC",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "dir-009",
+    "codigo": "DIR-009",
+    "nombre": "Direccional Chevrolet F",
+    "descripcion": "Direccional para camión Chevrolet FRR. Repuesto disponible por unidad. Referencia DIR-009.",
+    "categoria": "Direccional",
+    "carroceria": "Chevrolet FRR",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "exp-006",
+    "codigo": "EXP-006",
+    "nombre": "Exploradora Chevrolet F",
+    "descripcion": "Exploradora para camión Chevrolet FRR. Repuesto disponible por unidad. Referencia EXP-006.",
+    "categoria": "Exploradora",
+    "carroceria": "Chevrolet FRR",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-032",
+    "codigo": "FAR-032",
+    "nombre": "Puntera Farol Chevrolet Reward",
+    "descripcion": "Farol para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia FAR-032.",
+    "categoria": "Farol",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "per-001",
+    "codigo": "PER-001",
+    "nombre": "Persiana Delantera FRR 140 CM",
+    "descripcion": "Persiana para camión Isuzu FRR. Repuesto disponible por unidad. Referencia PER-001.",
+    "categoria": "Persiana",
+    "carroceria": "Isuzu FRR",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "per-002",
+    "codigo": "PER-002",
+    "nombre": "Persiana Chevrolet Reward 135 CM",
+    "descripcion": "Persiana para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia PER-002.",
+    "categoria": "Persiana",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "per-003",
+    "codigo": "PER-003",
+    "nombre": "Persiana Chevrolet Reward 110 CM",
+    "descripcion": "Persiana para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia PER-003.",
+    "categoria": "Persiana",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-005",
+    "codigo": "BOM-005",
+    "nombre": "Bómper Chevrolet Reward 195 CM",
+    "descripcion": "Bómper para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia BOM-005.",
+    "categoria": "Bómper",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-006",
+    "codigo": "BOM-006",
+    "nombre": "Bómper Chevrolet Reward 168 CM",
+    "descripcion": "Bómper para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia BOM-006.",
+    "categoria": "Bómper",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "est-001",
+    "codigo": "EST-001",
+    "nombre": "Estribo Chevrolet Reward",
+    "descripcion": "Estribo para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia EST-001.",
+    "categoria": "Estribo",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "luz-030",
+    "codigo": "LUZ-030",
+    "nombre": "Luz Lateral de Puerta Chevrolet Reward",
+    "descripcion": "Luz para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia LUZ-030.",
+    "categoria": "Luz",
+    "carroceria": "Chevrolet Reward",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "per-004",
+    "codigo": "PER-004",
+    "nombre": "Persiana Corta Blanca 112 X 34 X 23 CM",
+    "descripcion": "Persiana para carrocería de bus. Repuesto disponible por unidad. Referencia PER-004.",
+    "categoria": "Persiana",
+    "carroceria": "",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-007",
+    "codigo": "BOM-007",
+    "nombre": "Bómper Delantero 1680 MM",
+    "descripcion": "Bómper para carrocería de bus. Repuesto disponible por unidad. Referencia BOM-007.",
+    "categoria": "Bómper",
+    "carroceria": "",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "per-005",
+    "codigo": "PER-005",
+    "nombre": "Persiana Larga Blanca 135 X 24 X 33 CM",
+    "descripcion": "Persiana para carrocería de bus. Repuesto disponible por unidad. Referencia PER-005.",
+    "categoria": "Persiana",
+    "carroceria": "",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "ped-001",
+    "codigo": "PED-001",
+    "nombre": "Pedal de Acelerador",
+    "descripcion": "Pedal para carrocería de bus. Repuesto disponible por unidad. Referencia PED-001.",
+    "categoria": "Pedal",
+    "carroceria": "",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "pan-001",
+    "codigo": "PAN-001",
+    "nombre": "Panel Frontal 110 CM",
+    "descripcion": "Panel para carrocería de bus. Repuesto disponible por unidad. Referencia PAN-001.",
+    "categoria": "Panel",
+    "carroceria": "",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "pan-002",
+    "codigo": "PAN-002",
+    "nombre": "Panel Frontal 135 CM",
+    "descripcion": "Panel para carrocería de bus. Repuesto disponible por unidad. Referencia PAN-002.",
+    "categoria": "Panel",
+    "carroceria": "",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "bom-008",
+    "codigo": "BOM-008",
+    "nombre": "Bómper Delantero Hino 300 Ancho",
+    "descripcion": "Bómper para camión Hino 300. Repuesto disponible por unidad. Referencia BOM-008.",
+    "categoria": "Bómper",
+    "carroceria": "Hino 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "per-006",
+    "codigo": "PER-006",
+    "nombre": "Persiana Ancha Blanca",
+    "descripcion": "Persiana para carrocería de bus. Repuesto disponible por unidad. Referencia PER-006.",
+    "categoria": "Persiana",
+    "carroceria": "",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "per-007",
+    "codigo": "PER-007",
+    "nombre": "Persiana Angosta Hino 300 150 CM",
+    "descripcion": "Persiana para camión Hino 300. Repuesto disponible por unidad. Referencia PER-007.",
+    "categoria": "Persiana",
+    "carroceria": "Hino 300",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-033",
+    "codigo": "FAR-033",
+    "nombre": "Farol FRR",
+    "descripcion": "Farol para camión Isuzu FRR. Repuesto disponible por unidad. Referencia FAR-033.",
+    "categoria": "Farol",
+    "carroceria": "Isuzu FRR",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "far-034",
+    "codigo": "FAR-034",
+    "nombre": "Farol Canter 2005 con Vidrio",
+    "descripcion": "Farol para camión Mitsubishi Canter. Repuesto disponible por unidad. Referencia FAR-034.",
+    "categoria": "Farol",
+    "carroceria": "Mitsubishi Canter",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "esq-005",
+    "codigo": "ESQ-005",
+    "nombre": "Esquinero Canter",
+    "descripcion": "Esquinero para camión Mitsubishi Canter. Repuesto disponible por unidad. Referencia ESQ-005.",
+    "categoria": "Esquinero",
+    "carroceria": "Mitsubishi Canter",
+    "attrs": [],
+    "marcopolo": false
+  },
+  {
+    "id": "esq-006",
+    "codigo": "ESQ-006",
+    "nombre": "Esquinero Canter 2005",
+    "descripcion": "Esquinero para camión Mitsubishi Canter. Repuesto disponible por unidad. Referencia ESQ-006.",
+    "categoria": "Esquinero",
+    "carroceria": "Mitsubishi Canter",
+    "attrs": [],
+    "marcopolo": false
   }
 ];
 

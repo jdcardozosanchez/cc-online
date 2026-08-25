@@ -30,7 +30,38 @@ const CATEGORIAS = {
   MANIJA: { pre: "MAN", nombre: "Manija" },
   PISTON: { pre: "PIS", nombre: "Pistón" },
   REFLECTIVO: { pre: "REF", nombre: "Reflectivo" },
+  // Categorías de la línea de CAMIÓN (Hino, Isuzu, Chevrolet, JMC, Canter…).
+  FARO: { pre: "FAR", nombre: "Farol" }, // variante de "FAROL"
+  PUNTERA: { pre: "FAR", nombre: "Farol" }, // puntera de farol → va con Faroles
+  BOMPER: { pre: "BOM", nombre: "Bómper" },
+  PERSIANA: { pre: "PER", nombre: "Persiana" },
+  ESTRIBO: { pre: "EST", nombre: "Estribo" },
+  PANEL: { pre: "PAN", nombre: "Panel" },
+  PEDAL: { pre: "PED", nombre: "Pedal" },
 };
+
+// Vehículos de CAMIÓN (la lista nueva). El orden importa: los más específicos
+// primero ("Hino Dutro 300" antes que "Hino 300"). Ninguno es Marcopolo.
+const CAMIONES = [
+  { match: "HINO DUTRO 300", label: "Hino Dutro 300" },
+  { match: "HINO 500 FC", label: "Hino 500 FC" },
+  { match: "HINO 500", label: "Hino 500" },
+  { match: "HINO 300", label: "Hino 300" },
+  { match: "ISUZU NPR", label: "Isuzu NPR" },
+  { match: "CHEVROLET REWARD", label: "Chevrolet Reward" },
+  { match: "REWARD", label: "Chevrolet Reward" },
+  { match: "CHEVROLET F", label: "Chevrolet FRR" },
+  { match: "JMC", label: "JMC" },
+  { match: "CANTER", label: "Mitsubishi Canter" },
+  { match: "FRR", label: "Isuzu FRR" },
+];
+
+// Detecta el vehículo de camión en la descripción cruda (en MAYÚSCULAS).
+function detectarCamion(crudo) {
+  const u = crudo.toUpperCase();
+  for (const c of CAMIONES) if (u.includes(c.match)) return c;
+  return null;
+}
 
 // Carrocerías reconocibles (orden importa: "New G7" antes que "G7").
 // Cada una con su forma de visualización. Las de Marcopolo Superpolo se marcan.
@@ -82,7 +113,11 @@ function detectarAttrs(crudo) {
 }
 
 // Tokens que deben quedar en MAYÚSCULA tal cual (modelos, tecnología, voltaje…).
-const MAYUS = new Set(["G6", "G7", "G8", "LED", "24V", "12V", "JGB", "BRT", "AGA", "URB"]);
+const MAYUS = new Set([
+  "G6", "G7", "G8", "LED", "24V", "12V", "JGB", "BRT", "AGA", "URB",
+  // Modelos, siglas y unidades de la línea de camión.
+  "FC", "NPR", "FRR", "JMC", "N/F", "MM", "CM", "MAX", "SUP", "X",
+]);
 
 // Palabras de enlace que en español van en minúscula (nunca son la primera palabra aquí).
 const MINUS = new Set(["Y", "DE", "CON", "SIN", "A", "PARA", "LA", "EL", "LOS", "LAS", "DEL", "EN", "POR", "O", "U"]);
@@ -99,6 +134,7 @@ const TYPOS = {
   DIA: "Día",
   CARROCERIA: "Carrocería",
   PEQUEÑO: "Pequeño",
+  BOMPER: "Bómper", // el Excel lo escribe sin tilde
 };
 
 function titleCase(palabra) {
@@ -171,10 +207,22 @@ for (const fila of filas) {
   contador[cat.pre] = (contador[cat.pre] || 0) + 1;
   const codigo = `${cat.pre}-${String(contador[cat.pre]).padStart(3, "0")}`;
 
+  // Primero buscamos carrocería de bus; si no hay, un vehículo de camión.
   const carro = detectarCarroceria(desc);
+  const camion = carro ? null : detectarCamion(desc);
   const attrs = detectarAttrs(desc);
-  const carroStr = carro ? ` para carrocería ${carro.label}` : " para carrocería de bus";
-  const descripcion = `${cat.nombre}${carroStr}. Repuesto disponible por unidad. Referencia ${codigo}.`;
+
+  // El campo `carroceria` guarda la etiqueta del vehículo (bus o camión).
+  let vehiculo = "";
+  let dondeVa = " para carrocería de bus";
+  if (carro) {
+    vehiculo = carro.label;
+    dondeVa = ` para carrocería ${carro.label}`;
+  } else if (camion) {
+    vehiculo = camion.label;
+    dondeVa = ` para camión ${camion.label}`;
+  }
+  const descripcion = `${cat.nombre}${dondeVa}. Repuesto disponible por unidad. Referencia ${codigo}.`;
 
   productos.push({
     id: codigo.toLowerCase(),
@@ -182,7 +230,7 @@ for (const fila of filas) {
     nombre,
     descripcion,
     categoria: cat.nombre,
-    carroceria: carro ? carro.label : "",
+    carroceria: vehiculo,
     attrs,
     marcopolo: carro ? carro.marcopolo : false,
   });
