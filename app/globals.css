@@ -168,6 +168,20 @@ html { scroll-behavior: smooth; }
 .chip-side { font-family: var(--font-mono); letter-spacing: 0.05em; }
 .chip-on { background: var(--amber-500); color: var(--graphite-950); border-color: var(--amber-500); }
 
+/* --- Segmento Bus / Camión --- */
+.seg {
+  display: inline-flex; padding: 3px; gap: 2px;
+  background: var(--gray-100); border-radius: var(--radius-pill);
+}
+.seg-btn {
+  height: 34px; padding: 0 18px; border: none; border-radius: var(--radius-pill);
+  background: transparent; color: var(--fg2); font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: background 120ms var(--ease-out), color 120ms var(--ease-out);
+}
+.seg-btn:hover { color: var(--fg1); }
+.seg-active { background: var(--graphite-900); color: #fff; box-shadow: var(--shadow-sm); }
+.seg-active:hover { color: #fff; }
+
 /* --- Búsqueda --- */
 .search {
   display: flex; align-items: center; gap: 10px; height: 46px;
@@ -228,6 +242,8 @@ html { scroll-behavior: smooth; }
   background: radial-gradient(140px 90px at 50% 40%, rgba(255, 158, 0, 0.12), transparent 70%), var(--gray-100);
   display: grid; place-items: center; color: var(--gray-300);
 }
+.prod-photo.has-img { background: #fff; }
+.prod-photo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
 .prod-photo .photo-tag {
   position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
   font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em;

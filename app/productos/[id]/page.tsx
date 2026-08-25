@@ -24,16 +24,22 @@ export default async function ProductoPage({
 
   return (
     <article className="grid sm:grid-cols-2 gap-8 items-start">
-      {/* Foto-placeholder honesta (aún sin fotos reales) */}
+      {/* Foto real si existe; si no, placeholder honesto con el ícono */}
       <div
-        className="prod-photo rounded-xl"
+        className={"prod-photo rounded-xl" + (producto.imagen ? " has-img" : "")}
         style={{ height: 320, borderRadius: 14 }}
       >
         <div className="prod-badges">
           {producto.marcopolo && <span className="badge badge-marco">Marcopolo</span>}
         </div>
-        <CategoryIcon categoria={producto.categoria} size={64} strokeWidth={1.25} />
-        <span className="photo-tag">Foto de producto</span>
+        {producto.imagen ? (
+          <img src={producto.imagen} alt={producto.nombre} />
+        ) : (
+          <>
+            <CategoryIcon categoria={producto.categoria} size={64} strokeWidth={1.25} />
+            <span className="photo-tag">Foto de producto</span>
+          </>
+        )}
       </div>
 
       <div>

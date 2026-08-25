@@ -6,15 +6,16 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { productos } from "@/lib/products";
-import { listaCategorias } from "@/lib/categorias";
+import { listaCategorias, type Linea } from "@/lib/categorias";
 import { ProductCard } from "@/components/ProductCard";
 import { CategoryCard } from "@/components/CategoryCard";
 
 export default function ProductosPage() {
   const [q, setQ] = useState("");
   const [soloMarco, setSoloMarco] = useState(false);
+  const [linea, setLinea] = useState<Linea | undefined>(undefined); // undefined = todas
 
-  const categorias = useMemo(() => listaCategorias(), []);
+  const categorias = useMemo(() => listaCategorias(linea), [linea]);
 
   // Estamos "buscando" si hay texto o algún filtro activo → mostramos productos.
   const buscando = q.trim() !== "" || soloMarco;
@@ -23,6 +24,7 @@ export default function ProductosPage() {
     if (!buscando) return [];
     const texto = q.trim().toLowerCase();
     return productos.filter((p) => {
+      if (linea && p.linea !== linea) return false;
       if (soloMarco && !p.marcopolo) return false;
       if (texto) {
         const blob = `${p.codigo} ${p.nombre} ${p.carroceria} ${p.attrs.join(" ")}`.toLowerCase();
@@ -30,7 +32,13 @@ export default function ProductosPage() {
       }
       return true;
     });
-  }, [buscando, q, soloMarco]);
+  }, [buscando, q, soloMarco, linea]);
+
+  // Cuántas referencias hay en la línea elegida (para el subtítulo).
+  const totalLinea = useMemo(
+    () => (linea ? productos.filter((p) => p.linea === linea).length : productos.length),
+    [linea]
+  );
 
   return (
     <section>
@@ -44,21 +52,40 @@ export default function ProductosPage() {
         />
       </div>
 
-      <div className="kicker mt-6">Catálogo · {productos.length} referencias</div>
-      <h1 className="text-2xl font-extrabold tracking-tight mt-1 mb-5" style={{ color: "var(--fg1)" }}>
-        Autopartes para buses
-      </h1>
-
-      {/* Filtro Marcopolo (activa la vista de resultados) */}
-      <div className="flex gap-2 flex-wrap items-center mb-6">
-        <span className="text-sm" style={{ color: "var(--fg3)" }}>Filtrar:</span>
-        <button
-          className={"chip" + (soloMarco ? " chip-active" : "")}
-          onClick={() => setSoloMarco((v) => !v)}
-        >
-          Marcopolo
+      {/* Segmento Bus / Camión: separa las dos líneas del catálogo */}
+      <div className="seg mt-6">
+        <button className={"seg-btn" + (!linea ? " seg-active" : "")} onClick={() => setLinea(undefined)}>
+          Todo
+        </button>
+        <button className={"seg-btn" + (linea === "Bus" ? " seg-active" : "")} onClick={() => setLinea("Bus")}>
+          Bus
+        </button>
+        <button className={"seg-btn" + (linea === "Camión" ? " seg-active" : "")} onClick={() => setLinea("Camión")}>
+          Camión
         </button>
       </div>
+
+      <div className="kicker mt-4">Catálogo · {totalLinea} referencias</div>
+      <h1 className="text-2xl font-extrabold tracking-tight mt-1 mb-5" style={{ color: "var(--fg1)" }}>
+        {linea === "Camión"
+          ? "Autopartes para camiones"
+          : linea === "Bus"
+          ? "Autopartes para buses"
+          : "Autopartes para buses y camiones"}
+      </h1>
+
+      {/* Filtro Marcopolo (solo aplica a buses) */}
+      {linea !== "Camión" && (
+        <div className="flex gap-2 flex-wrap items-center mb-6">
+          <span className="text-sm" style={{ color: "var(--fg3)" }}>Filtrar:</span>
+          <button
+            className={"chip" + (soloMarco ? " chip-active" : "")}
+            onClick={() => setSoloMarco((v) => !v)}
+          >
+            Marcopolo
+          </button>
+        </div>
+      )}
 
       {!buscando ? (
         /* Vista por defecto: tarjetas de categoría */

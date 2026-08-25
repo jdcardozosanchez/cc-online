@@ -12,7 +12,9 @@ export type Product = {
   nombre: string;
   descripcion: string;
   categoria: string;   // p. ej. "Farol", "Stop" (define el ícono y el filtro)
-  carroceria: string;  // p. ej. "G8", "Paradiso" o "" si no aplica
+  carroceria: string;  // vehículo: "G8", "Paradiso", "Hino 500"… o "" si no aplica
+  linea: "Bus" | "Camión"; // a qué línea pertenece la referencia
+  imagen: string;      // ruta de la foto (p. ej. "/productos/cam-171.jpeg") o "" si no hay
   attrs: string[];     // metadatos técnicos: ["Full LED", "24V", ...]
   marcopolo: boolean;  // pertenece a una carrocería Marcopolo Superpolo
 };
@@ -27,6 +29,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Yutong. Repuesto disponible por unidad. Referencia FAR-001.",
     "categoria": "Farol",
     "carroceria": "Yutong",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -37,6 +41,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Invicar. Repuesto disponible por unidad. Referencia FAR-002.",
     "categoria": "Farol",
     "carroceria": "Invicar",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -47,6 +53,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Inconcar. Repuesto disponible por unidad. Referencia FAR-003.",
     "categoria": "Farol",
     "carroceria": "Inconcar",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -59,6 +67,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Busscar. Repuesto disponible por unidad. Referencia FAR-004.",
     "categoria": "Farol",
     "carroceria": "Busscar",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -69,6 +79,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Busscar. Repuesto disponible por unidad. Referencia FAR-005.",
     "categoria": "Farol",
     "carroceria": "Busscar",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -79,6 +91,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Paradiso. Repuesto disponible por unidad. Referencia FAR-006.",
     "categoria": "Farol",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -89,6 +103,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Sigma. Repuesto disponible por unidad. Referencia FAR-007.",
     "categoria": "Farol",
     "carroceria": "Sigma",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -99,6 +115,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Andare. Repuesto disponible por unidad. Referencia FAR-008.",
     "categoria": "Farol",
     "carroceria": "Andare",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -109,6 +127,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería G7. Repuesto disponible por unidad. Referencia FAR-009.",
     "categoria": "Farol",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -119,6 +139,8 @@ export const productos: Product[] = [
     "descripcion": "Aleta para carrocería Paradiso. Repuesto disponible por unidad. Referencia ALE-001.",
     "categoria": "Aleta",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -129,6 +151,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería New G7. Repuesto disponible por unidad. Referencia FAR-010.",
     "categoria": "Farol",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -139,6 +163,8 @@ export const productos: Product[] = [
     "descripcion": "Aleta para carrocería New G7. Repuesto disponible por unidad. Referencia ALE-002.",
     "categoria": "Aleta",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -149,6 +175,8 @@ export const productos: Product[] = [
     "descripcion": "Exploradora para carrocería New G7. Repuesto disponible por unidad. Referencia EXP-001.",
     "categoria": "Exploradora",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -159,6 +187,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería G8. Repuesto disponible por unidad. Referencia FAR-011.",
     "categoria": "Farol",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "Full LED",
       "24V"
@@ -172,6 +202,8 @@ export const productos: Product[] = [
     "descripcion": "Exploradora para carrocería G8. Repuesto disponible por unidad. Referencia EXP-002.",
     "categoria": "Exploradora",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -182,6 +214,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Audace. Repuesto disponible por unidad. Referencia FAR-012.",
     "categoria": "Farol",
     "carroceria": "Audace",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -192,6 +226,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Atlantis. Repuesto disponible por unidad. Referencia FAR-013.",
     "categoria": "Farol",
     "carroceria": "Atlantis",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -202,6 +238,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Orion. Repuesto disponible por unidad. Referencia FAR-014.",
     "categoria": "Farol",
     "carroceria": "Orion",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -212,6 +250,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería de bus. Repuesto disponible por unidad. Referencia FAR-015.",
     "categoria": "Farol",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -222,6 +262,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Maxi Ibiza. Repuesto disponible por unidad. Referencia FAR-016.",
     "categoria": "Farol",
     "carroceria": "Maxi Ibiza",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -232,6 +274,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Megabuses. Repuesto disponible por unidad. Referencia FAR-017.",
     "categoria": "Farol",
     "carroceria": "Megabuses",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -242,6 +286,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Fasccino. Repuesto disponible por unidad. Referencia FAR-018.",
     "categoria": "Farol",
     "carroceria": "Fasccino",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -252,6 +298,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G7. Repuesto disponible por unidad. Referencia STP-001.",
     "categoria": "Stop",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -262,6 +310,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Maxi Ibiza. Repuesto disponible por unidad. Referencia STP-002.",
     "categoria": "Stop",
     "carroceria": "Maxi Ibiza",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -272,6 +322,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Maxi Ibiza. Repuesto disponible por unidad. Referencia STP-003.",
     "categoria": "Stop",
     "carroceria": "Maxi Ibiza",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "Genérico"
     ],
@@ -284,6 +336,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G8. Repuesto disponible por unidad. Referencia STP-004.",
     "categoria": "Stop",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -296,6 +350,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G8. Repuesto disponible por unidad. Referencia STP-005.",
     "categoria": "Stop",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -308,6 +364,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G8. Repuesto disponible por unidad. Referencia STP-006.",
     "categoria": "Stop",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -320,6 +378,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Ibiza. Repuesto disponible por unidad. Referencia STP-007.",
     "categoria": "Stop",
     "carroceria": "Ibiza",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -330,6 +390,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Audace. Repuesto disponible por unidad. Referencia STP-008.",
     "categoria": "Stop",
     "carroceria": "Audace",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -340,6 +402,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Sigma. Repuesto disponible por unidad. Referencia STP-009.",
     "categoria": "Stop",
     "carroceria": "Sigma",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -350,6 +414,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Fasccino. Repuesto disponible por unidad. Referencia STP-010.",
     "categoria": "Stop",
     "carroceria": "Fasccino",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -360,6 +426,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Majestic. Repuesto disponible por unidad. Referencia STP-011.",
     "categoria": "Stop",
     "carroceria": "Majestic",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -370,6 +438,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Atlantis. Repuesto disponible por unidad. Referencia STP-012.",
     "categoria": "Stop",
     "carroceria": "Atlantis",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -380,6 +450,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Sigma. Repuesto disponible por unidad. Referencia STP-013.",
     "categoria": "Stop",
     "carroceria": "Sigma",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -390,6 +462,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Modasa. Repuesto disponible por unidad. Referencia STP-014.",
     "categoria": "Stop",
     "carroceria": "Modasa",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -400,6 +474,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Paradiso. Repuesto disponible por unidad. Referencia STP-015.",
     "categoria": "Stop",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -410,6 +486,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Andare. Repuesto disponible por unidad. Referencia STP-016.",
     "categoria": "Stop",
     "carroceria": "Andare",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -420,6 +498,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Paradiso. Repuesto disponible por unidad. Referencia STP-017.",
     "categoria": "Stop",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -430,6 +510,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Paradiso. Repuesto disponible por unidad. Referencia LUZ-001.",
     "categoria": "Luz",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -440,6 +522,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Andare. Repuesto disponible por unidad. Referencia LUZ-002.",
     "categoria": "Luz",
     "carroceria": "Andare",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -450,6 +534,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-003.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -462,6 +548,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-004.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -474,6 +562,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G8. Repuesto disponible por unidad. Referencia LUZ-005.",
     "categoria": "Luz",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -486,6 +576,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G8. Repuesto disponible por unidad. Referencia LUZ-006.",
     "categoria": "Luz",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -498,6 +590,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para carrocería Torino (BRT). Repuesto disponible por unidad. Referencia DIR-001.",
     "categoria": "Direccional",
     "carroceria": "Torino (BRT)",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -508,6 +602,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Torino (BRT). Repuesto disponible por unidad. Referencia STP-018.",
     "categoria": "Stop",
     "carroceria": "Torino (BRT)",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -518,6 +614,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G7. Repuesto disponible por unidad. Referencia STP-019.",
     "categoria": "Stop",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -528,6 +626,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G8. Repuesto disponible por unidad. Referencia STP-020.",
     "categoria": "Stop",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -538,6 +638,8 @@ export const productos: Product[] = [
     "descripcion": "Esquinero para carrocería G7. Repuesto disponible por unidad. Referencia ESQ-001.",
     "categoria": "Esquinero",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -548,6 +650,8 @@ export const productos: Product[] = [
     "descripcion": "Esquinero para carrocería New G7. Repuesto disponible por unidad. Referencia ESQ-002.",
     "categoria": "Esquinero",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -558,6 +662,8 @@ export const productos: Product[] = [
     "descripcion": "Esquinero para carrocería G8. Repuesto disponible por unidad. Referencia ESQ-003.",
     "categoria": "Esquinero",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -568,6 +674,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-007.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -578,6 +686,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería New G7. Repuesto disponible por unidad. Referencia LUZ-008.",
     "categoria": "Luz",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -588,6 +698,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G8. Repuesto disponible por unidad. Referencia LUZ-009.",
     "categoria": "Luz",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "Genérico"
     ],
@@ -600,6 +712,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G8. Repuesto disponible por unidad. Referencia LUZ-010.",
     "categoria": "Luz",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "Genérico"
     ],
@@ -612,6 +726,8 @@ export const productos: Product[] = [
     "descripcion": "Esquinero para carrocería Audace. Repuesto disponible por unidad. Referencia ESQ-004.",
     "categoria": "Esquinero",
     "carroceria": "Audace",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -622,6 +738,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Audace. Repuesto disponible por unidad. Referencia LUZ-011.",
     "categoria": "Luz",
     "carroceria": "Audace",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -632,6 +750,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-012.",
     "categoria": "Luz",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -645,6 +765,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Paradiso. Repuesto disponible por unidad. Referencia LUZ-013.",
     "categoria": "Luz",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -655,6 +777,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Senior. Repuesto disponible por unidad. Referencia FAR-019.",
     "categoria": "Farol",
     "carroceria": "Senior",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -665,6 +789,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería Senior. Repuesto disponible por unidad. Referencia FAR-020.",
     "categoria": "Farol",
     "carroceria": "Senior",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -675,6 +801,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-014.",
     "categoria": "Luz",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -688,6 +816,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-015.",
     "categoria": "Luz",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -701,6 +831,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-016.",
     "categoria": "Luz",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -714,6 +846,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Senior. Repuesto disponible por unidad. Referencia LUZ-017.",
     "categoria": "Luz",
     "carroceria": "Senior",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "24V"
     ],
@@ -726,6 +860,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para carrocería Senior. Repuesto disponible por unidad. Referencia DIR-002.",
     "categoria": "Direccional",
     "carroceria": "Senior",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -739,6 +875,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Senior. Repuesto disponible por unidad. Referencia LUZ-018.",
     "categoria": "Luz",
     "carroceria": "Senior",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "24V"
     ],
@@ -751,6 +889,8 @@ export const productos: Product[] = [
     "descripcion": "Exploradora para carrocería G7. Repuesto disponible por unidad. Referencia EXP-003.",
     "categoria": "Exploradora",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -761,6 +901,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-019.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -771,6 +913,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para carrocería de bus. Repuesto disponible por unidad. Referencia DIR-003.",
     "categoria": "Direccional",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -783,6 +927,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería Paradiso. Repuesto disponible por unidad. Referencia STP-021.",
     "categoria": "Stop",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "24V"
     ],
@@ -795,6 +941,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G7. Repuesto disponible por unidad. Referencia STP-022.",
     "categoria": "Stop",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -805,6 +953,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G8. Repuesto disponible por unidad. Referencia STP-023.",
     "categoria": "Stop",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -818,6 +968,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería New G7. Repuesto disponible por unidad. Referencia LUZ-020.",
     "categoria": "Luz",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -828,6 +980,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-021.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -838,6 +992,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G7. Repuesto disponible por unidad. Referencia STP-024.",
     "categoria": "Stop",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -848,6 +1004,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería New G7. Repuesto disponible por unidad. Referencia STP-025.",
     "categoria": "Stop",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -858,6 +1016,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería G8. Repuesto disponible por unidad. Referencia STP-026.",
     "categoria": "Stop",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -868,6 +1028,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-022.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -878,6 +1040,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-023.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -888,6 +1052,8 @@ export const productos: Product[] = [
     "descripcion": "Espejo para carrocería G7. Repuesto disponible por unidad. Referencia ESP-001.",
     "categoria": "Espejo",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -898,6 +1064,8 @@ export const productos: Product[] = [
     "descripcion": "Espejo para carrocería New G7. Repuesto disponible por unidad. Referencia ESP-002.",
     "categoria": "Espejo",
     "carroceria": "New G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "Calefacción",
       "Eléctrico"
@@ -911,6 +1079,8 @@ export const productos: Product[] = [
     "descripcion": "Espejo para carrocería G8. Repuesto disponible por unidad. Referencia ESP-003.",
     "categoria": "Espejo",
     "carroceria": "G8",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "Calefacción",
       "Genérico"
@@ -924,6 +1094,8 @@ export const productos: Product[] = [
     "descripcion": "Espejo para carrocería G6. Repuesto disponible por unidad. Referencia ESP-004.",
     "categoria": "Espejo",
     "carroceria": "G6",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -934,6 +1106,8 @@ export const productos: Product[] = [
     "descripcion": "Conector para carrocería G7. Repuesto disponible por unidad. Referencia CON-001.",
     "categoria": "Conector",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -944,6 +1118,8 @@ export const productos: Product[] = [
     "descripcion": "Conector para carrocería G7. Repuesto disponible por unidad. Referencia CON-002.",
     "categoria": "Conector",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -954,6 +1130,8 @@ export const productos: Product[] = [
     "descripcion": "Conector para carrocería G7. Repuesto disponible por unidad. Referencia CON-003.",
     "categoria": "Conector",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -964,6 +1142,8 @@ export const productos: Product[] = [
     "descripcion": "Conector para carrocería G7. Repuesto disponible por unidad. Referencia CON-004.",
     "categoria": "Conector",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -974,6 +1154,8 @@ export const productos: Product[] = [
     "descripcion": "Conector para carrocería G7. Repuesto disponible por unidad. Referencia CON-005.",
     "categoria": "Conector",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -984,6 +1166,8 @@ export const productos: Product[] = [
     "descripcion": "Pistón para carrocería de bus. Repuesto disponible por unidad. Referencia PIS-001.",
     "categoria": "Pistón",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -994,6 +1178,8 @@ export const productos: Product[] = [
     "descripcion": "Pistón para carrocería Eurocity. Repuesto disponible por unidad. Referencia PIS-002.",
     "categoria": "Pistón",
     "carroceria": "Eurocity",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1004,6 +1190,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-001.",
     "categoria": "Cerrajería",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1014,6 +1202,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-002.",
     "categoria": "Cerrajería",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1024,6 +1214,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-003.",
     "categoria": "Cerrajería",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1034,6 +1226,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-004.",
     "categoria": "Cerrajería",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1044,6 +1238,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-005.",
     "categoria": "Cerrajería",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1054,6 +1250,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-006.",
     "categoria": "Cerrajería",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1064,6 +1262,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería de bus. Repuesto disponible por unidad. Referencia CER-007.",
     "categoria": "Cerrajería",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1074,6 +1274,8 @@ export const productos: Product[] = [
     "descripcion": "Manija para carrocería G7. Repuesto disponible por unidad. Referencia MAN-001.",
     "categoria": "Manija",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -1084,6 +1286,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Paradiso. Repuesto disponible por unidad. Referencia LUZ-024.",
     "categoria": "Luz",
     "carroceria": "Paradiso",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -1094,6 +1298,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería de bus. Repuesto disponible por unidad. Referencia LUZ-025.",
     "categoria": "Luz",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "24V"
     ],
@@ -1106,6 +1312,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-026.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -1116,6 +1324,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-027.",
     "categoria": "Stop",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -1129,6 +1339,8 @@ export const productos: Product[] = [
     "descripcion": "Stop para carrocería de bus. Repuesto disponible por unidad. Referencia STP-028.",
     "categoria": "Stop",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED",
       "24V"
@@ -1142,6 +1354,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para carrocería de bus. Repuesto disponible por unidad. Referencia FAR-021.",
     "categoria": "Farol",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1152,6 +1366,8 @@ export const productos: Product[] = [
     "descripcion": "Manija para carrocería G7. Repuesto disponible por unidad. Referencia MAN-002.",
     "categoria": "Manija",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -1162,6 +1378,8 @@ export const productos: Product[] = [
     "descripcion": "Cerrajería para carrocería G7. Repuesto disponible por unidad. Referencia CER-008.",
     "categoria": "Cerrajería",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -1172,6 +1390,8 @@ export const productos: Product[] = [
     "descripcion": "Manija para carrocería de bus. Repuesto disponible por unidad. Referencia MAN-003.",
     "categoria": "Manija",
     "carroceria": "",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1182,6 +1402,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería Torino (BRT). Repuesto disponible por unidad. Referencia LUZ-027.",
     "categoria": "Luz",
     "carroceria": "Torino (BRT)",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -1192,6 +1414,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para carrocería G7. Repuesto disponible por unidad. Referencia LUZ-028.",
     "categoria": "Luz",
     "carroceria": "G7",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [
       "LED"
     ],
@@ -1204,6 +1428,8 @@ export const productos: Product[] = [
     "descripcion": "Reflectivo para carrocería Torino (BRT). Repuesto disponible por unidad. Referencia REF-001.",
     "categoria": "Reflectivo",
     "carroceria": "Torino (BRT)",
+    "linea": "Bus",
+    "imagen": "",
     "attrs": [],
     "marcopolo": true
   },
@@ -1214,6 +1440,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-022.",
     "categoria": "Farol",
     "carroceria": "Hino Dutro 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-171.jpeg",
     "attrs": [],
     "marcopolo": false
   },
@@ -1224,6 +1452,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-023.",
     "categoria": "Farol",
     "carroceria": "Hino Dutro 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-173.jpeg",
     "attrs": [],
     "marcopolo": false
   },
@@ -1234,6 +1464,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-024.",
     "categoria": "Farol",
     "carroceria": "Hino Dutro 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-175.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1244,6 +1476,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia FAR-025.",
     "categoria": "Farol",
     "carroceria": "Hino Dutro 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-177.jpeg",
     "attrs": [],
     "marcopolo": false
   },
@@ -1254,6 +1488,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para camión Hino Dutro 300. Repuesto disponible por unidad. Referencia DIR-004.",
     "categoria": "Direccional",
     "carroceria": "Hino Dutro 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-179.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1264,6 +1500,8 @@ export const productos: Product[] = [
     "descripcion": "Exploradora para camión Hino 300. Repuesto disponible por unidad. Referencia EXP-004.",
     "categoria": "Exploradora",
     "carroceria": "Hino 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-181.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1274,6 +1512,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Hino 500. Repuesto disponible por unidad. Referencia FAR-026.",
     "categoria": "Farol",
     "carroceria": "Hino 500",
+    "linea": "Camión",
+    "imagen": "/productos/cam-183.jpeg",
     "attrs": [],
     "marcopolo": false
   },
@@ -1284,6 +1524,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para camión Hino 500. Repuesto disponible por unidad. Referencia DIR-005.",
     "categoria": "Direccional",
     "carroceria": "Hino 500",
+    "linea": "Camión",
+    "imagen": "/productos/cam-185.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1294,6 +1536,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-001.",
     "categoria": "Bómper",
     "carroceria": "Hino 500",
+    "linea": "Camión",
+    "imagen": "/productos/cam-187.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1304,6 +1548,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-002.",
     "categoria": "Bómper",
     "carroceria": "Hino 500",
+    "linea": "Camión",
+    "imagen": "/productos/cam-188.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1314,6 +1560,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-003.",
     "categoria": "Bómper",
     "carroceria": "Hino 500",
+    "linea": "Camión",
+    "imagen": "/productos/cam-189.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1324,6 +1572,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para camión Hino 500. Repuesto disponible por unidad. Referencia BOM-004.",
     "categoria": "Bómper",
     "carroceria": "Hino 500",
+    "linea": "Camión",
+    "imagen": "/productos/cam-190.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1334,6 +1584,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Hino 500 FC. Repuesto disponible por unidad. Referencia FAR-027.",
     "categoria": "Farol",
     "carroceria": "Hino 500 FC",
+    "linea": "Camión",
+    "imagen": "/productos/cam-191.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1344,6 +1596,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para camión Hino 500 FC. Repuesto disponible por unidad. Referencia DIR-006.",
     "categoria": "Direccional",
     "carroceria": "Hino 500 FC",
+    "linea": "Camión",
+    "imagen": "/productos/cam-193.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1354,6 +1608,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Isuzu NPR. Repuesto disponible por unidad. Referencia FAR-028.",
     "categoria": "Farol",
     "carroceria": "Isuzu NPR",
+    "linea": "Camión",
+    "imagen": "/productos/cam-195.jpeg",
     "attrs": [],
     "marcopolo": false
   },
@@ -1364,6 +1620,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para camión Isuzu NPR. Repuesto disponible por unidad. Referencia DIR-007.",
     "categoria": "Direccional",
     "carroceria": "Isuzu NPR",
+    "linea": "Camión",
+    "imagen": "/productos/cam-197.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1374,6 +1632,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia FAR-029.",
     "categoria": "Farol",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-199.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1384,6 +1644,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia FAR-030.",
     "categoria": "Farol",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-201.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1394,6 +1656,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia DIR-008.",
     "categoria": "Direccional",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-203.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1404,6 +1668,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión JMC. Repuesto disponible por unidad. Referencia FAR-031.",
     "categoria": "Farol",
     "carroceria": "JMC",
+    "linea": "Camión",
+    "imagen": "/productos/cam-205.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1414,6 +1680,8 @@ export const productos: Product[] = [
     "descripcion": "Exploradora para camión JMC. Repuesto disponible por unidad. Referencia EXP-005.",
     "categoria": "Exploradora",
     "carroceria": "JMC",
+    "linea": "Camión",
+    "imagen": "/productos/cam-207.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1424,6 +1692,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para camión JMC. Repuesto disponible por unidad. Referencia LUZ-029.",
     "categoria": "Luz",
     "carroceria": "JMC",
+    "linea": "Camión",
+    "imagen": "/productos/cam-209.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1434,6 +1704,8 @@ export const productos: Product[] = [
     "descripcion": "Direccional para camión Chevrolet FRR. Repuesto disponible por unidad. Referencia DIR-009.",
     "categoria": "Direccional",
     "carroceria": "Chevrolet FRR",
+    "linea": "Camión",
+    "imagen": "/productos/cam-211.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1444,6 +1716,8 @@ export const productos: Product[] = [
     "descripcion": "Exploradora para camión Chevrolet FRR. Repuesto disponible por unidad. Referencia EXP-006.",
     "categoria": "Exploradora",
     "carroceria": "Chevrolet FRR",
+    "linea": "Camión",
+    "imagen": "/productos/cam-213.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1454,6 +1728,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia FAR-032.",
     "categoria": "Farol",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-215.jpeg",
     "attrs": [],
     "marcopolo": false
   },
@@ -1464,6 +1740,8 @@ export const productos: Product[] = [
     "descripcion": "Persiana para camión Isuzu FRR. Repuesto disponible por unidad. Referencia PER-001.",
     "categoria": "Persiana",
     "carroceria": "Isuzu FRR",
+    "linea": "Camión",
+    "imagen": "",
     "attrs": [],
     "marcopolo": false
   },
@@ -1474,6 +1752,8 @@ export const productos: Product[] = [
     "descripcion": "Persiana para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia PER-002.",
     "categoria": "Persiana",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-218.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1484,6 +1764,8 @@ export const productos: Product[] = [
     "descripcion": "Persiana para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia PER-003.",
     "categoria": "Persiana",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-219.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1494,6 +1776,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia BOM-005.",
     "categoria": "Bómper",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-220.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1504,6 +1788,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia BOM-006.",
     "categoria": "Bómper",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-221.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1514,6 +1800,8 @@ export const productos: Product[] = [
     "descripcion": "Estribo para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia EST-001.",
     "categoria": "Estribo",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-222.jpeg",
     "attrs": [],
     "marcopolo": false
   },
@@ -1524,6 +1812,8 @@ export const productos: Product[] = [
     "descripcion": "Luz para camión Chevrolet Reward. Repuesto disponible por unidad. Referencia LUZ-030.",
     "categoria": "Luz",
     "carroceria": "Chevrolet Reward",
+    "linea": "Camión",
+    "imagen": "/productos/cam-224.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1534,6 +1824,8 @@ export const productos: Product[] = [
     "descripcion": "Persiana para carrocería de bus. Repuesto disponible por unidad. Referencia PER-004.",
     "categoria": "Persiana",
     "carroceria": "",
+    "linea": "Camión",
+    "imagen": "/productos/cam-226.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1544,6 +1836,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para carrocería de bus. Repuesto disponible por unidad. Referencia BOM-007.",
     "categoria": "Bómper",
     "carroceria": "",
+    "linea": "Camión",
+    "imagen": "/productos/cam-227.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1554,6 +1848,8 @@ export const productos: Product[] = [
     "descripcion": "Persiana para carrocería de bus. Repuesto disponible por unidad. Referencia PER-005.",
     "categoria": "Persiana",
     "carroceria": "",
+    "linea": "Camión",
+    "imagen": "/productos/cam-228.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1564,6 +1860,8 @@ export const productos: Product[] = [
     "descripcion": "Pedal para carrocería de bus. Repuesto disponible por unidad. Referencia PED-001.",
     "categoria": "Pedal",
     "carroceria": "",
+    "linea": "Camión",
+    "imagen": "/productos/cam-229.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1574,6 +1872,8 @@ export const productos: Product[] = [
     "descripcion": "Panel para carrocería de bus. Repuesto disponible por unidad. Referencia PAN-001.",
     "categoria": "Panel",
     "carroceria": "",
+    "linea": "Camión",
+    "imagen": "/productos/cam-231.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1584,6 +1884,8 @@ export const productos: Product[] = [
     "descripcion": "Panel para carrocería de bus. Repuesto disponible por unidad. Referencia PAN-002.",
     "categoria": "Panel",
     "carroceria": "",
+    "linea": "Camión",
+    "imagen": "/productos/cam-232.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1594,6 +1896,8 @@ export const productos: Product[] = [
     "descripcion": "Bómper para camión Hino 300. Repuesto disponible por unidad. Referencia BOM-008.",
     "categoria": "Bómper",
     "carroceria": "Hino 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-233.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1604,6 +1908,8 @@ export const productos: Product[] = [
     "descripcion": "Persiana para carrocería de bus. Repuesto disponible por unidad. Referencia PER-006.",
     "categoria": "Persiana",
     "carroceria": "",
+    "linea": "Camión",
+    "imagen": "/productos/cam-234.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1614,6 +1920,8 @@ export const productos: Product[] = [
     "descripcion": "Persiana para camión Hino 300. Repuesto disponible por unidad. Referencia PER-007.",
     "categoria": "Persiana",
     "carroceria": "Hino 300",
+    "linea": "Camión",
+    "imagen": "/productos/cam-235.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1624,6 +1932,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Isuzu FRR. Repuesto disponible por unidad. Referencia FAR-033.",
     "categoria": "Farol",
     "carroceria": "Isuzu FRR",
+    "linea": "Camión",
+    "imagen": "/productos/cam-236.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1634,6 +1944,8 @@ export const productos: Product[] = [
     "descripcion": "Farol para camión Mitsubishi Canter. Repuesto disponible por unidad. Referencia FAR-034.",
     "categoria": "Farol",
     "carroceria": "Mitsubishi Canter",
+    "linea": "Camión",
+    "imagen": "/productos/cam-238.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1644,6 +1956,8 @@ export const productos: Product[] = [
     "descripcion": "Esquinero para camión Mitsubishi Canter. Repuesto disponible por unidad. Referencia ESQ-005.",
     "categoria": "Esquinero",
     "carroceria": "Mitsubishi Canter",
+    "linea": "Camión",
+    "imagen": "/productos/cam-240.png",
     "attrs": [],
     "marcopolo": false
   },
@@ -1654,6 +1968,8 @@ export const productos: Product[] = [
     "descripcion": "Esquinero para camión Mitsubishi Canter. Repuesto disponible por unidad. Referencia ESQ-006.",
     "categoria": "Esquinero",
     "carroceria": "Mitsubishi Canter",
+    "linea": "Camión",
+    "imagen": "/productos/cam-242.png",
     "attrs": [],
     "marcopolo": false
   }

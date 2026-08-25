@@ -28,10 +28,18 @@ export function productosDeCategoria(cat: string): Product[] {
 // del nivel 1). Respeta el orden de `categorias`.
 export type CategoriaInfo = { nombre: string; slug: string; total: number };
 
-export function listaCategorias(): CategoriaInfo[] {
-  return categorias.map((nombre) => ({
-    nombre,
-    slug: categoriaSlug(nombre),
-    total: productos.filter((p) => p.categoria === nombre).length,
-  }));
+// Línea del catálogo. `undefined` = todas.
+export type Linea = "Bus" | "Camión";
+
+// Lista de categorías (para el nivel 1). Si se pasa `linea`, cuenta solo esa
+// línea y descarta las categorías que queden vacías.
+export function listaCategorias(linea?: Linea): CategoriaInfo[] {
+  const enLinea = (p: Product) => !linea || p.linea === linea;
+  return categorias
+    .map((nombre) => ({
+      nombre,
+      slug: categoriaSlug(nombre),
+      total: productos.filter((p) => p.categoria === nombre && enLinea(p)).length,
+    }))
+    .filter((c) => c.total > 0);
 }

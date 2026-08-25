@@ -11,12 +11,18 @@ export function ProductCard({ producto }: { producto: Product }) {
   return (
     <article className="prod-card">
       <Link href={`/productos/${producto.id}`} className="prod-link">
-        <div className="prod-photo">
+        <div className={"prod-photo" + (producto.imagen ? " has-img" : "")}>
           <div className="prod-badges">
             {producto.marcopolo && <span className="badge badge-marco">Marcopolo</span>}
           </div>
-          <CategoryIcon categoria={producto.categoria} size={34} strokeWidth={1.5} />
-          <span className="photo-tag">Foto de producto</span>
+          {producto.imagen ? (
+            <img src={producto.imagen} alt={producto.nombre} loading="lazy" />
+          ) : (
+            <>
+              <CategoryIcon categoria={producto.categoria} size={34} strokeWidth={1.5} />
+              <span className="photo-tag">Foto de producto</span>
+            </>
+          )}
         </div>
         <div className="prod-body">
           <span className="prod-code">{producto.codigo}</span>

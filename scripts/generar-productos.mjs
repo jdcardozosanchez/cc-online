@@ -8,7 +8,11 @@
 // Para regenerar tras cambiar el CSV:   node scripts/generar-productos.mjs
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
+
+// Categorías que solo existen en la línea de CAMIÓN (para etiquetar Bus/Camión
+// cuando la referencia no menciona un vehículo concreto).
+const CATEGORIAS_CAMION = new Set(["Bómper", "Persiana", "Estribo", "Panel", "Pedal"]);
 
 // --- Configuración por categoría: prefijo de código + nombre legible.
 // (El ícono visual lo pone la UI con Lucide; aquí no usamos emojis — design system.)
@@ -184,6 +188,27 @@ const filas = readFileSync(new URL("../data/productos-origen.csv", import.meta.u
   .split("\n")
   .slice(1); // saltar encabezado
 
+// --- Mapa de fotos (línea de camión). Lo produce  scripts/extraer-fotos.py.
+//     Es opcional: si no está, el catálogo se genera sin fotos.
+const imagenesPath = new URL("../data/imagenes-camion.json", import.meta.url);
+const imagenesPorFila = existsSync(imagenesPath)
+  ? JSON.parse(readFileSync(imagenesPath, "utf8"))
+  : {};
+
+// Pre-pasada: como cada pieza viene dos veces (DER/IZQ) y a veces solo una de las
+// dos filas trae foto, buscamos por cada nombre la PRIMERA foto disponible del par.
+const fotoPorClave = {};
+for (const fila of filas) {
+  const col = fila.split(";");
+  const n = (col[0] || "").trim();
+  const desc = (col[2] || "").trim();
+  if (!desc) continue;
+  const clave = limpiarNombre(desc).toUpperCase();
+  if (!fotoPorClave[clave] && imagenesPorFila[n]) {
+    fotoPorClave[clave] = `/productos/${imagenesPorFila[n]}`;
+  }
+}
+
 const contador = {}; // para numerar los códigos por prefijo
 const productos = [];
 const nombresVistos = new Set(); // una sola referencia por nombre (fusiona los antiguos DER/IZQ)
@@ -224,6 +249,10 @@ for (const fila of filas) {
   }
   const descripcion = `${cat.nombre}${dondeVa}. Repuesto disponible por unidad. Referencia ${codigo}.`;
 
+  // Línea: Bus o Camión. Camión si detectamos un vehículo de camión o si la
+  // categoría es exclusiva de camión; en cualquier otro caso, Bus.
+  const linea = camion || CATEGORIAS_CAMION.has(cat.nombre) ? "Camión" : "Bus";
+
   productos.push({
     id: codigo.toLowerCase(),
     codigo,
@@ -231,6 +260,8 @@ for (const fila of filas) {
     descripcion,
     categoria: cat.nombre,
     carroceria: vehiculo,
+    linea,
+    imagen: fotoPorClave[clave] || "",
     attrs,
     marcopolo: carro ? carro.marcopolo : false,
   });
@@ -253,7 +284,9 @@ export type Product = {
   nombre: string;
   descripcion: string;
   categoria: string;   // p. ej. "Farol", "Stop" (define el ícono y el filtro)
-  carroceria: string;  // p. ej. "G8", "Paradiso" o "" si no aplica
+  carroceria: string;  // vehículo: "G8", "Paradiso", "Hino 500"… o "" si no aplica
+  linea: "Bus" | "Camión"; // a qué línea pertenece la referencia
+  imagen: string;      // ruta de la foto (p. ej. "/productos/cam-171.jpeg") o "" si no hay
   attrs: string[];     // metadatos técnicos: ["Full LED", "24V", ...]
   marcopolo: boolean;  // pertenece a una carrocería Marcopolo Superpolo
 };

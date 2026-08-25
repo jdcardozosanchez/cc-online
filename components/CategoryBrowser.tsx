@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Search } from "lucide-react";
 import type { Product } from "@/lib/products";
+import type { Linea } from "@/lib/categorias";
 import { ProductCard } from "./ProductCard";
 
 export function CategoryBrowser({
@@ -18,10 +19,17 @@ export function CategoryBrowser({
 }) {
   const [q, setQ] = useState("");
   const [soloMarco, setSoloMarco] = useState(false);
+  const [linea, setLinea] = useState<Linea | undefined>(undefined);
+
+  // ¿Esta categoría mezcla bus y camión? Solo entonces mostramos el segmento.
+  const hayBus = items.some((p) => p.linea === "Bus");
+  const hayCamion = items.some((p) => p.linea === "Camión");
+  const mixta = hayBus && hayCamion;
 
   const filtrados = useMemo(() => {
     const texto = q.trim().toLowerCase();
     return items.filter((p) => {
+      if (linea && p.linea !== linea) return false;
       if (soloMarco && !p.marcopolo) return false;
       if (texto) {
         const blob = `${p.codigo} ${p.nombre} ${p.carroceria} ${p.attrs.join(" ")}`.toLowerCase();
@@ -29,7 +37,7 @@ export function CategoryBrowser({
       }
       return true;
     });
-  }, [q, soloMarco, items]);
+  }, [q, soloMarco, items, linea]);
 
   return (
     <section>
@@ -48,6 +56,21 @@ export function CategoryBrowser({
       >
         {categoria}
       </h1>
+
+      {/* Segmento Bus / Camión: solo si la categoría tiene de las dos líneas */}
+      {mixta && (
+        <div className="seg mb-4">
+          <button className={"seg-btn" + (!linea ? " seg-active" : "")} onClick={() => setLinea(undefined)}>
+            Todo
+          </button>
+          <button className={"seg-btn" + (linea === "Bus" ? " seg-active" : "")} onClick={() => setLinea("Bus")}>
+            Bus
+          </button>
+          <button className={"seg-btn" + (linea === "Camión" ? " seg-active" : "")} onClick={() => setLinea("Camión")}>
+            Camión
+          </button>
+        </div>
+      )}
 
       {/* Búsqueda dentro de la categoría */}
       <div className="search mb-4">
