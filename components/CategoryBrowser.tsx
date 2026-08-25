@@ -82,15 +82,17 @@ export function CategoryBrowser({
         />
       </div>
 
-      {/* Filtro Marcopolo */}
-      <div className="flex gap-2 flex-wrap items-center mb-6">
-        <button
-          className={"chip" + (soloMarco ? " chip-active" : "")}
-          onClick={() => setSoloMarco((v) => !v)}
-        >
-          Marcopolo
-        </button>
-      </div>
+      {/* Filtro Marcopolo — solo si la categoría tiene piezas Marcopolo */}
+      {items.some((p) => p.marcopolo) && (
+        <div className="flex gap-2 flex-wrap items-center mb-6">
+          <button
+            className={"chip" + (soloMarco ? " chip-active" : "")}
+            onClick={() => setSoloMarco((v) => !v)}
+          >
+            Marcopolo
+          </button>
+        </div>
+      )}
 
       {filtrados.length === 0 ? (
         <p className="py-12 text-center" style={{ color: "var(--fg3)" }}>
